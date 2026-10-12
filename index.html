@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maryam Irekeola | PhD Researcher, UX Specialist & Founder of InsightSpace.Co</title>
+  
+  <!-- Meta Descriptions & Open Graph -->
+  <meta name="description" content="Official website of Maryam Irekeola — PhD Researcher at Kingston University, UX Researcher, Founder of InsightSpace.Co, speaker and research communication advocate exploring leadership psychology, sustainability, and decision-making." />
+  <meta name="keywords" content="Maryam Irekeola, InsightSpace.Co, PhD researcher, Kingston University, UX researcher, behavioural science, leadership psychology, sustainability, research communication, 6G-VERSUS, BAM2026" />
+  <meta name="author" content="Maryam Irekeola" />
+
+  <!-- Open Graph / Social Sharing Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maryam Irekeola | PhD Researcher & Founder of InsightSpace.Co" />
+  <meta property="og:description" content="Exploring how people make decisions in complex and uncertain environments. UX Researcher, PhD candidate at Kingston University, and research communication advocate." />
+  <meta property="og:image" content="assets/img/maryam-irekeola.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Maryam Irekeola | PhD Researcher & Founder of InsightSpace.Co" />
+  <meta name="twitter:description" content="Exploring how people make decisions in complex and uncertain environments." />
+  <meta name="twitter:image" content="assets/img/maryam-irekeola.jpg" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
+  <!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            },
+            accent: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300 selection:bg-teal-500 selection:text-white">
+
+  <!-- ========================================================================
+       1. Navigation Bar (Glassmorphism & Responsive)
+       ======================================================================== -->
+  <header class="nav-fixed bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Name -->
+      <a href="#" class="flex flex-col group">
+        <span class="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+          Maryam <span class="text-teal-600 dark:text-teal-400">Irekeola</span>
+        </span>
+        <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          PhD & UX Researcher
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+        <a href="#about" class="px-3.5 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">About</a>
+        <a href="#insightspace" class="px-3.5 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-purple-500"></span>
+          InsightSpace.Co
+        </a>
+        <a href="#research" class="px-3.5 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Research</a>
+        <a href="#speaking" class="px-3.5 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Speaking & Workshops</a>
+        <a href="#contact" class="px-3.5 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Contact</a>
+      </nav>
+
+      <!-- Desktop Right Controls -->
+      <div class="hidden md:flex items-center space-x-3">
+        <!-- Quick Search Modal Trigger -->
+        <button type="button" class="open-search-trigger flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Search (Ctrl + K)">
+          <i class="uil uil-search text-sm"></i>
+          <span>Search</span>
+          <kbd class="px-1.5 py-0.5 text-[10px] font-semibold bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded shadow-xs">⌘K</kbd>
+        </button>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button id="theme-toggle-btn" type="button" class="p-2.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+          <i class="uil uil-moon text-lg dark:hidden"></i>
+          <i class="uil uil-sun text-lg hidden dark:block text-amber-400"></i>
+        </button>
+
+        <!-- Booking / Consultation Button -->
+        <button type="button" class="open-booking-trigger inline-flex items-center justify-center px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-medium text-xs tracking-wide shadow-md shadow-teal-600/20 transition transform hover:-translate-y-0.5">
+          <i class="uil uil-calendar-alt mr-1.5 text-sm"></i>
+          Book Consultation
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger and Quick Toggle -->
+      <div class="flex items-center space-x-2 md:hidden">
+        <button type="button" class="open-search-trigger p-2 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Search">
+          <i class="uil uil-search text-xl"></i>
+        </button>
+        <button id="theme-toggle-mobile" type="button" class="p-2 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle theme">
+          <i class="uil uil-moon text-xl dark:hidden"></i>
+          <i class="uil uil-sun text-xl hidden dark:block text-amber-400"></i>
+        </button>
+        <button id="mobile-menu-btn" type="button" class="p-2 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+          <i class="uil uil-bars text-2xl"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer & Overlay -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-72 max-w-[85vw] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out" aria-label="Mobile Navigation">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800">
+        <span class="font-display font-bold text-lg text-slate-900 dark:text-white">Menu</span>
+        <button id="mobile-menu-close" type="button" class="p-2 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded-lg" aria-label="Close menu">
+          <i class="uil uil-times text-xl"></i>
+        </button>
+      </div>
+
+      <nav class="mt-6 flex flex-col space-y-3">
+        <a href="#about" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 transition">
+          <i class="uil uil-user mr-3 text-lg text-teal-600"></i> About Maryam
+        </a>
+        <a href="#insightspace" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 transition">
+          <i class="uil uil-rocket mr-3 text-lg text-purple-600"></i> InsightSpace.Co
+        </a>
+        <a href="#research" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 transition">
+          <i class="uil uil-flask mr-3 text-lg text-teal-600"></i> Research & Papers
+        </a>
+        <a href="#speaking" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 transition">
+          <i class="uil uil-presentation mr-3 text-lg text-teal-600"></i> Speaking & Workshops
+        </a>
+        <a href="#contact" class="mobile-nav-link flex items-center px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 font-medium hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 transition">
+          <i class="uil uil-envelope mr-3 text-lg text-teal-600"></i> Contact & Collaboration
+        </a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-slate-100 dark:border-slate-800">
+      <button type="button" class="open-booking-trigger w-full flex items-center justify-center py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm shadow-md transition">
+        <i class="uil uil-calendar-alt mr-2 text-lg"></i> Book a Consultation
+      </button>
+      <div class="mt-4 flex justify-center space-x-4 text-slate-500">
+        <a href="https://www.linkedin.com/in/maryamirekeola" target="_blank" rel="noopener noreferrer" class="hover:text-teal-600 transition text-lg" aria-label="LinkedIn"><i class="uil uil-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@Insightspace.co" target="_blank" rel="noopener noreferrer" class="hover:text-teal-600 transition flex items-center justify-center w-5 h-5" aria-label="TikTok"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.33 22a6.34 6.34 0 0 0 6.34-6.33V9.17a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.85-.6z"/></svg></a>
+        <a href="https://www.instagram.com/insightspace.co" target="_blank" rel="noopener noreferrer" class="hover:text-teal-600 transition text-lg" aria-label="Instagram"><i class="uil uil-instagram"></i></a>
+        <a href="mailto:irekeolamaryam@gmail.com" class="hover:text-teal-600 transition text-lg" aria-label="Email"><i class="uil uil-envelope"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       2. Hero Section (Animated Status Badge, Core Bio & Action CTAs)
+       ======================================================================== -->
+  <section class="relative pt-32 pb-20 sm:pt-36 sm:pb-28 lg:pt-40 lg:pb-32 overflow-hidden">
+    <!-- Ambient Background Lighting -->
+    <div class="blob bg-teal-200 dark:bg-teal-900/30 w-96 h-96 rounded-full top-10 left-1/4 -translate-x-1/2 opacity-50 dark:opacity-20"></div>
+    <div class="blob bg-purple-200 dark:bg-purple-900/30 w-80 h-80 rounded-full top-40 right-10 opacity-50 dark:opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-8 text-center lg:text-left">
+          
+          <!-- Animated Rotating Badge -->
+          <div id="hero-status-pill" class="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-teal-50 dark:bg-slate-900 border border-teal-200/80 dark:border-teal-700/60 shadow-xs">
+            <span class="flex h-2.5 w-2.5 relative mr-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500"></span>
+            </span>
+            <span id="hero-status-text" class="text-xs font-bold tracking-wider uppercase text-teal-800 dark:text-teal-300">
+              PhD Researcher @ Kingston University
+            </span>
+          </div>
+
+          <!-- Main Value Proposition Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 dark:text-white leading-[1.12] mb-6">
+            Understanding how people decide in <br class="hidden sm:inline" />
+            <span class="text-gradient">complex environments.</span>
+          </h1>
+
+          <!-- Impact Bio -->
+          <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light mb-10">
+            I am a UX Researcher and PhD candidate exploring how leaders make critical decisions within organisations — particularly in <strong class="text-slate-900 dark:text-white font-semibold">sustainability</strong> and <strong class="text-slate-900 dark:text-white font-semibold">emerging tech</strong> where cognitive biases shape risk perception. As the founder of <a href="#insightspace" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline decoration-2">InsightSpace.Co</a>, I turn complex academic knowledge into usable, memorable insights beyond academia.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-10">
+            <a href="#research" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-medium text-sm shadow-xl shadow-teal-700/20 transform hover:-translate-y-0.5 transition">
+              Explore Research & Papers
+              <i class="uil uil-arrow-right ml-2 text-base"></i>
+            </a>
+
+            <a href="#insightspace" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm shadow-xl shadow-purple-600/20 transform hover:-translate-y-0.5 transition">
+              <i class="uil uil-rocket mr-2 text-base"></i>
+              InsightSpace.Co
+            </a>
+
+            <a href="#speaking" class="inline-flex items-center justify-center px-5 py-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm shadow-xs transition">
+              Speaking & Workshops
+            </a>
+          </div>
+
+          <!-- Social Verification & Profiles -->
+          <div class="flex items-center justify-center lg:justify-start gap-5 text-slate-500 dark:text-slate-400">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Connect:</span>
+            <a href="https://www.linkedin.com/in/maryamirekeola" target="_blank" rel="noopener noreferrer" class="hover:text-teal-600 dark:hover:text-teal-400 transition" title="LinkedIn Profile">
+              <i class="uil uil-linkedin text-xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@Insightspace.co" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 dark:hover:text-purple-400 transition flex items-center justify-center" title="InsightSpace TikTok (@Insightspace.co)">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.33 22a6.34 6.34 0 0 0 6.34-6.33V9.17a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.85-.6z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/insightspace.co" target="_blank" rel="noopener noreferrer" class="hover:text-pink-600 dark:hover:text-pink-400 transition" title="InsightSpace Instagram (@insightspace.co)">
+              <i class="uil uil-instagram text-xl"></i>
+            </a>
+            <a href="mailto:irekeolamaryam@gmail.com" class="hover:text-teal-600 dark:hover:text-teal-400 transition" title="Email Maryam (irekeolamaryam@gmail.com)">
+              <i class="uil uil-envelope text-xl"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Hero Bento Profile Card with Maryam's Photo -->
+        <div class="lg:col-span-4">
+          <div class="relative max-w-md mx-auto bento-card bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-xl">
+            <div class="absolute top-4 right-4 z-20 px-3 py-1 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-full text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-xs">
+              Kingston Univ PhD
+            </div>
+
+            <!-- Profile Photo with Elegant Gradient Overlay -->
+            <div class="relative h-72 sm:h-80 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img src="assets/img/maryam-irekeola.jpg" alt="Maryam Irekeola — PhD Researcher & Founder" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <h3 class="font-display font-extrabold text-xl text-white">Maryam Irekeola</h3>
+                <p class="text-xs text-teal-300 font-medium flex items-center gap-1.5 mt-0.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  UX Researcher & Behavioural Strategist
+                </p>
+                <p class="text-[11px] text-slate-300 mt-0.5">Stevenage & London, United Kingdom</p>
+              </div>
+            </div>
+
+            <!-- Focus Badges & Details -->
+            <div class="p-6">
+              <div class="space-y-3 text-xs">
+                <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Core Domain</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Leadership Psychology</span>
+                </div>
+                <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">EU Horizon Project</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">6G-VERSUS Associate</span>
+                </div>
+                <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Pedagogy</span>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Hackathon Toolkit Designer</span>
+                </div>
+                <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Community</span>
+                  <a href="https://www.tiktok.com/@insightspace.co" target="_blank" rel="noopener noreferrer" class="font-semibold text-purple-600 dark:text-purple-400 hover:underline">Founder, InsightSpace.Co</a>
+                </div>
+              </div>
+
+              <!-- Quick Action in Card -->
+              <div class="mt-5 pt-3">
+                <button type="button" class="open-booking-trigger w-full py-2.5 px-4 rounded-xl bg-teal-50 dark:bg-teal-900/30 hover:bg-teal-100 dark:hover:bg-teal-900/50 text-teal-800 dark:text-teal-200 font-semibold text-xs transition flex items-center justify-center gap-2 border border-teal-200/60 dark:border-teal-700/60">
+                  <i class="uil uil-comment-alt-dots text-base"></i> Request Collaboration or Speaking
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. About Section & Academic Distinction Bento Grid
+       ======================================================================== -->
+  <section id="about" class="py-20 sm:py-28 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <span class="text-teal-600 dark:text-teal-400 font-bold uppercase tracking-wider text-xs">About Maryam</span>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 dark:text-white mt-2 leading-tight">
+          Bridging the gap between the boardroom, the lab, and the product.
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Story Narrative -->
+        <div class="lg:col-span-7 space-y-6 text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+          <p>
+            I connect UX research, behavioural science, and doctoral scholarship through one core inquiry: <strong>how do people make decisions in complex and uncertain environments?</strong>
+          </p>
+          <p>
+            In my PhD research at <strong>Kingston University</strong>, I examine how organizational leaders navigate sustainability contexts where cognitive biases, heuristic traps, and shifting regulations can cloud risk perception. I focus on creating governance systems that scaffold sound, ethical, and forward-looking decisions.
+          </p>
+          <p>
+            In my UX research practice, I apply that same analytical rigor to product, service, and organizational design. Using qualitative inquiry, deep interviews, and behavioural data coding, I uncover how stakeholders actually behave — not just what they say — and translate those findings into actionable strategies.
+          </p>
+          
+          <div class="pt-4 flex flex-wrap gap-2.5">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">Qualitative Data Coding</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">Behavioural Research</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">Theory of Change</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">Circular 6G Frameworks</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">Hackathon Pedagogy</span>
+          </div>
+        </div>
+
+        <!-- Academic & Milestone Bento Grid -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          
+          <!-- Card 1 -->
+          <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80">
+            <div class="text-3xl font-display font-extrabold text-teal-600 dark:text-teal-400 mb-1">PhD</div>
+            <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Candidate</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Kingston University London (Leadership Psychology)</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80">
+            <div class="text-3xl font-display font-extrabold text-purple-600 dark:text-purple-400 mb-1">MSc</div>
+            <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">UX Design</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Kingston University (User Experience & Systems)</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80 col-span-2">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300">EU-Funded Project</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 font-bold">Horizon Europe</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-900 dark:text-white text-base">6G-VERSUS Graduate Research Associate</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Co-designing multidimensional indicators and circular frameworks evaluating environmental, social, and economic impacts of emerging 6G infrastructure.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80 col-span-2">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300">Leadership & Diversity</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-bold">Competitive Cohort</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-900 dark:text-white text-base">Cajigo 100 Women in Tech Mentee</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Selected from 300+ applicants for an intensive accelerator focused on emerging tech leadership and research-driven innovation.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. InsightSpace.Co Section (Spotlight Venture, Community, TikTok & IG)
+       ======================================================================== -->
+  <section id="insightspace" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Abstract Glows -->
+    <div class="blob bg-purple-600 w-96 h-96 rounded-full top-0 right-0 opacity-20"></div>
+    <div class="blob bg-teal-600 w-80 h-80 rounded-full bottom-0 left-0 opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Spotlight Hero Card -->
+      <div class="bento-card rounded-3xl bg-gradient-to-br from-slate-800/90 to-purple-950/60 border border-purple-500/30 p-8 sm:p-12 lg:p-16 mb-16 shadow-2xl">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-8 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-wider">
+              <i class="uil uil-rocket text-sm"></i>
+              Flagship Community Initiative
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight">
+              InsightSpace<span class="text-purple-400">.Co</span>
+            </h2>
+
+            <p class="text-lg sm:text-xl text-purple-100/90 leading-relaxed max-w-2xl font-light">
+              How do we take complex academic knowledge and make it usable, memorable, and actionable beyond academia?
+            </p>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+              InsightSpace.Co is an emerging digital community for PhD researchers, postgraduate academics, and research-led thinkers. We break down the barriers of esoteric academic jargon, offering practical tools for research communication, thesis navigation, and industry translation.
+            </p>
+
+            <!-- Direct Social Links for InsightSpace -->
+            <div class="pt-2 flex flex-wrap gap-4">
+              <a href="https://www.tiktok.com/@Insightspace.co" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3.5 rounded-full bg-white text-slate-950 hover:bg-purple-100 font-bold text-sm shadow-lg transition transform hover:-translate-y-0.5">
+                <svg class="w-4 h-4 fill-current mr-2 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.33 22a6.34 6.34 0 0 0 6.34-6.33V9.17a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.85-.6z"/></svg>
+                Follow on TikTok (@Insightspace.co)
+              </a>
+              <a href="https://www.instagram.com/insightspace.co" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 font-bold text-sm shadow-lg transition transform hover:-translate-y-0.5">
+                <i class="uil uil-instagram mr-2 text-lg"></i>
+                Follow on Instagram (@insightspace.co)
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 bg-slate-900/80 rounded-2xl p-6 border border-slate-700/60 space-y-4">
+            <h3 class="font-display font-bold text-base text-white border-b border-slate-800 pb-3">Who It's Built For:</h3>
+            
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-purple-500/20 text-purple-400 text-sm flex-shrink-0 mt-0.5">
+                <i class="uil uil-graduation-cap"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm text-white">PhD & Doctoral Researchers</h4>
+                <p class="text-xs text-slate-400">Scholars looking to communicate their research without losing rigour.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-teal-500/20 text-teal-400 text-sm flex-shrink-0 mt-0.5">
+                <i class="uil uil-lightbulb-alt"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm text-white">Research-to-Industry Pioneers</h4>
+                <p class="text-xs text-slate-400">Academics translating scientific evidence into commercial products.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-pink-500/20 text-pink-400 text-sm flex-shrink-0 mt-0.5">
+                <i class="uil uil-megaphone"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm text-white">Science & Knowledge Creators</h4>
+                <p class="text-xs text-slate-400">Content creators passionate about factual, ethical public scholarship.</p>
+              </div>
+            </div>
+
+            <!-- Founder snippet with Maryam's photo -->
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <img src="assets/img/maryam-irekeola.jpg" alt="Maryam Irekeola" class="w-11 h-11 rounded-full object-cover object-top border-2 border-purple-500/60 shadow-md" />
+              <div>
+                <p class="text-xs font-semibold text-white">Founded by Maryam Irekeola</p>
+                <p class="text-[11px] text-purple-300">PhD Researcher & UX Strategist</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- InsightSpace 3 Pillars Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <div class="bento-card p-8 rounded-2xl bg-slate-800/60 border border-slate-700/70">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6">
+            <i class="uil uil-file-alt"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Demystifying Jargon</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Converting 80-page journal articles and theoretical frameworks into clear visual summaries, punchy case vignettes, and digestible media.
+          </p>
+        </div>
+
+        <div class="bento-card p-8 rounded-2xl bg-slate-800/60 border border-slate-700/70">
+          <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-2xl mb-6">
+            <i class="uil uil-compass"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Actionable Communication</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Practical guides on pitch decks, public talks, policy briefing briefs, and digital presence strategies for early-career researchers.
+          </p>
+        </div>
+
+        <div class="bento-card p-8 rounded-2xl bg-slate-800/60 border border-slate-700/70">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-2xl mb-6">
+            <i class="uil uil-heart"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Researcher Resilience</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            A candid community space discussing the emotional reality of doctoral research, combating isolation, and sustaining long-term purpose.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. Research & Publications Section (BAM2026, 6G-VERSUS, Toolkits)
+       ======================================================================== -->
+  <section id="research" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-teal-600 dark:text-teal-400 font-bold uppercase tracking-wider text-xs">Scholarship & Output</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white mt-2">
+          Academic Research & Publications
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base">
+          Investigating cognitive biases, sustainability governance, and human-centred frameworks in emerging technology.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Publication 1: BAM2026 Paper -->
+        <article class="bento-card flex flex-col justify-between p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 font-bold text-[11px] uppercase tracking-wider">
+                Conference Paper
+              </span>
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">2026</span>
+            </div>
+
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                British Academy of Management (BAM)
+              </span>
+            </div>
+
+            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 hover:text-teal-600 dark:hover:text-teal-400 transition">
+              Decision-Making Under Uncertainty: How Cognitive Biases Shape Leadership Choices in Sustainability Transitions
+            </h3>
+
+            <p class="text-xs italic text-teal-700 dark:text-teal-400 mb-4">
+              BAM 2026 Annual Conference Proceedings
+            </p>
+
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              Examines the cognitive mechanisms and behavioral heuristics employed by organizational leaders when confronting sustainability mandates. Proposes a decision-support governance model to mitigate short-term bias.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Author: Maryam Irekeola</span>
+            <span class="inline-flex items-center text-teal-600 dark:text-teal-400 font-bold text-xs group cursor-pointer">
+              Read Paper Details <i class="uil uil-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- Publication 2: 6G-VERSUS EU Project Deliverable -->
+        <article class="bento-card flex flex-col justify-between p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 font-bold text-[11px] uppercase tracking-wider">
+                EU Research Deliverable
+              </span>
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Horizon Europe</span>
+            </div>
+
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                6G-VERSUS Project
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400">
+                EU Funded
+              </span>
+            </div>
+
+            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 hover:text-purple-600 dark:hover:text-purple-400 transition">
+              Multidimensional Impact Assessment Framework for Emerging 6G Technologies
+            </h3>
+
+            <p class="text-xs italic text-purple-700 dark:text-purple-400 mb-4">
+              Environmental, Social, and Economic Impact Evaluation Framework
+            </p>
+
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              A comprehensive indicator system assessing circularity and societal consequences for future telecommunications architecture, actively synthesising inputs across academia, industry leaders, and policy bodies.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Lead Contributor & Associate</span>
+            <span class="inline-flex items-center text-purple-600 dark:text-purple-400 font-bold text-xs group cursor-pointer">
+              Explore 6G-VERSUS <i class="uil uil-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- Project 3: Hackathon Pedagogy Toolkit -->
+        <article class="bento-card flex flex-col justify-between p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 font-bold text-[11px] uppercase tracking-wider">
+                Pedagogy & UX Toolkit
+              </span>
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Kingston University</span>
+            </div>
+
+            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3">
+              Hackathon Pedagogy Toolkit for Higher Education Staff
+            </h3>
+
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              Synthesized first-hand qualitative interviews with university lecturers to design modular, accessible templates, facilitation frameworks, and assessment models for experiential learning.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500 dark:text-slate-400">UX Researcher & Content Designer</span>
+            <span class="text-xs font-bold text-teal-600 dark:text-teal-400">Higher Ed Innovation</span>
+          </div>
+        </article>
+
+        <!-- Project 4: Behavioural Impact Framework -->
+        <article class="bento-card flex flex-col justify-between p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 font-bold text-[11px] uppercase tracking-wider">
+                Impact Evaluation
+              </span>
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Kingston Hive</span>
+            </div>
+
+            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3">
+              Community Resilience Behavioural Impact Framework
+            </h3>
+
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+              Developed a Theory of Change model analysing survey metrics across inner resilience, social cohesion, and practical preparedness to evidence community outcomes to major funders and stakeholders.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500 dark:text-slate-400">Research Assistant</span>
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Theory of Change</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. Speaking & Workshops Section
+       ======================================================================== -->
+  <section id="speaking" class="py-24 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-teal-600 dark:text-teal-400 font-bold uppercase tracking-wider text-xs">Public Engagement</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white mt-2">
+            Speaking & Workshops
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3 text-base max-w-xl">
+            Delivering keynotes, masterclasses, and hands-on workshops that transform theoretical research into tangible organizational action.
+          </p>
+        </div>
+
+        <button type="button" class="open-booking-trigger inline-flex items-center px-6 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm shadow-md transition self-start md:self-auto">
+          <i class="uil uil-microphone mr-2 text-base"></i>
+          Invite Maryam to Speak
+        </button>
+      </div>
+
+      <!-- Events & Workshops 2-Column Grid -->
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- Column 1: Featured Events Spoken At -->
+        <div class="lg:col-span-6 space-y-6">
+          <h3 class="text-xl font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i class="uil uil-presentation-play text-teal-600"></i> Events & Keynotes
+          </h3>
+
+          <div class="space-y-4">
+            
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <span class="font-bold text-teal-600 dark:text-teal-400">Academic Conference</span>
+                <span>2026</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">British Academy of Management (BAM) 2026</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                Presented on cognitive heuristics and decision biases in sustainability leadership.
+              </p>
+            </div>
+
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <span class="font-bold text-purple-600 dark:text-purple-400">Industry Panel</span>
+                <span>2025</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">Women in Tech Accelerator Panel (Cajigo)</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                Panelist discussing user experience strategy, women leading in emerging technology, and navigating STEM transitions.
+              </p>
+            </div>
+
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <span class="font-bold text-teal-600 dark:text-teal-400">University Symposium</span>
+                <span>2025</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">Kingston Hackathon Pedagogy Symposium</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                Addressed academic staff on experiential learning design, hackathon evaluation, and student engagement.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Column 2: Workshop Offerings -->
+        <div class="lg:col-span-6 space-y-6">
+          <h3 class="text-xl font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i class="uil uil-layers text-purple-600"></i> Workshop Offerings
+          </h3>
+
+          <div class="space-y-4">
+            
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="inline-block px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-800 dark:text-teal-300 font-bold text-[10px] uppercase mb-2">
+                For Academic Cohorts & Labs
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">Translating Complex Research for Industry Impact</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                A step-by-step masterclass teaching PhD candidates and researchers how to communicate papers into executive briefs, product requirements, and public discourse.
+              </p>
+            </div>
+
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="inline-block px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300 font-bold text-[10px] uppercase mb-2">
+                For Product & Strategy Teams
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">Qualitative UX & Behavioural Science in Decision-Making</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                How to observe what users actually do versus what they claim, mitigating team bias during product discovery and strategic roadmapping.
+              </p>
+            </div>
+
+            <div class="bento-card p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700">
+              <div class="inline-block px-2.5 py-0.5 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-800 dark:text-pink-300 font-bold text-[10px] uppercase mb-2">
+                For Leaders & Sustainability Officers
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">De-biasing Governance: Leading Under Uncertainty</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                Practical cognitive frameworks for boardrooms and executive teams facing ambiguous green transitions and emerging tech regulations.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. Contact & Collaboration Section (Interactive AJAX Form)
+       ======================================================================== -->
+  <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-gradient-to-br from-teal-900 to-slate-900 rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
+        <!-- Abstract Lights -->
+        <div class="blob bg-teal-500 w-80 h-80 rounded-full top-0 right-0 opacity-20"></div>
+        <div class="blob bg-purple-500 w-80 h-80 rounded-full bottom-0 left-0 opacity-20"></div>
+
+        <div class="relative z-10 grid lg:grid-cols-12 gap-12">
+          
+          <!-- Contact Left Info -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-teal-400 font-bold uppercase tracking-wider text-xs">Let's Connect</span>
+            <h2 class="text-3xl sm:text-4xl font-display font-extrabold leading-tight">
+              Let's collaborate on research, speaking, or ideas.
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Whether you are an academic institution, a conference organizer, a brand, or a fellow researcher seeking to collaborate — I'd love to hear from you.
+            </p>
+
+            <div class="space-y-4 pt-4">
+              <a href="mailto:irekeolamaryam@gmail.com" class="flex items-center gap-3 text-slate-200 hover:text-teal-300 transition text-sm">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-teal-400">
+                  <i class="uil uil-envelope text-lg"></i>
+                </div>
+                <span>irekeolamaryam@gmail.com</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/maryamirekeola" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-200 hover:text-teal-300 transition text-sm">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-teal-400">
+                  <i class="uil uil-linkedin text-lg"></i>
+                </div>
+                <span>linkedin.com/in/maryamirekeola</span>
+              </a>
+
+              <div class="flex items-center gap-3 text-slate-200 text-sm">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-teal-400">
+                  <i class="uil uil-building text-lg"></i>
+                </div>
+                <span>Kingston University London</span>
+              </div>
+            </div>
+
+            <!-- Direct Booking Trigger -->
+            <div class="pt-6">
+              <button type="button" class="open-booking-trigger inline-flex items-center px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold text-xs border border-white/20 transition">
+                <i class="uil uil-calendar-alt mr-2 text-base text-teal-400"></i>
+                Schedule a 1:1 Discussion Call
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form Right -->
+          <div class="lg:col-span-7">
+            
+            <!-- Success Confirmation Box (Hidden initially) -->
+            <div id="contact-success-box" class="hidden p-8 rounded-2xl bg-teal-950/60 border border-teal-500/40 text-center space-y-4">
+              <div class="w-14 h-14 rounded-full bg-teal-500 text-white flex items-center justify-center mx-auto text-2xl shadow-lg">
+                <i class="uil uil-check"></i>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Thank You for Reaching Out!</h3>
+              <p class="text-slate-300 text-sm max-w-md mx-auto">
+                Your message has been received. Maryam will review your inquiry and get back to you shortly.
+              </p>
+              <button id="contact-reset-btn" type="button" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 font-semibold text-xs hover:bg-slate-100 transition">
+                Send Another Message
+              </button>
+            </div>
+
+            <!-- Main Form (Connected to FormSubmit.co for live email dispatch) -->
+            <form id="contact-form" action="https://formsubmit.co/irekeolamaryam@gmail.com" method="POST" class="space-y-4">
+              <!-- FormSubmit Configuration Fields -->
+              <input type="hidden" name="_subject" value="New Inquiry from Website — Maryam Irekeola" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <!-- Honeypot anti-spam field -->
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <div>
+                <label for="name" class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Dr. / Prof. / Full Name" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-hidden focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition text-sm" />
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="your.name@institution.org" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-hidden focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition text-sm" />
+              </div>
+
+              <div>
+                <label for="inquiry-type" class="block text-xs font-semibold text-slate-300 mb-1">Inquiry Purpose</label>
+                <select id="inquiry-type" name="inquiry_type" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-white/20 text-white focus:outline-hidden focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition text-sm">
+                  <option value="Keynote or Panel Speaking">Keynote / Panel Speaking Request</option>
+                  <option value="Workshop or Masterclass">Workshop / Masterclass Booking</option>
+                  <option value="Academic or 6G Research Collaboration">Academic or 6G Research Collaboration</option>
+                  <option value="InsightSpace.Co Partnership">InsightSpace.Co Partnership</option>
+                  <option value="Behavioural UX Consulting">Behavioural UX Consulting</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-semibold text-slate-300 mb-1">Your Message</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Tell me a bit about your event, project, timeline, or objectives..." class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-hidden focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition text-sm"></textarea>
+              </div>
+
+              <button id="contact-submit-btn" type="submit" class="w-full py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-teal-500/20 transition flex items-center justify-center">
+                Send Message <i class="uil uil-arrow-right ml-1"></i>
+              </button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. Global Search Modal (Ctrl/Cmd + K)
+       ======================================================================== -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-200" aria-modal="true" role="dialog">
+    <div class="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[80vh]">
+      
+      <!-- Search Input Header -->
+      <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+        <i class="uil uil-search text-xl text-slate-400"></i>
+        <input type="text" id="search-input" placeholder="Search publications, InsightSpace, workshops, topics..." class="flex-1 bg-transparent border-none text-slate-900 dark:text-white placeholder-slate-400 text-base focus:outline-hidden" autocomplete="off" />
+        <button id="search-close-btn" type="button" class="text-xs px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white">
+          ESC
+        </button>
+      </div>
+
+      <!-- Live Search Results Container -->
+      <div id="search-results" class="p-4 overflow-y-auto space-y-2 flex-1">
+        <!-- Populated dynamically via main.js -->
+      </div>
+
+      <!-- Search Footer -->
+      <div class="p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+        <span>Type to filter research & projects</span>
+        <span>Press ESC to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       9. Interactive Booking Modal (Speaking & Consultation)
+       ======================================================================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-200" aria-modal="true" role="dialog">
+    <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white">Schedule a Consultation</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speaking, workshop requests, or academic collaboration</p>
+        </div>
+        <button id="booking-close-btn" type="button" class="p-2 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded-lg">
+          <i class="uil uil-times text-xl"></i>
+        </button>
+      </div>
+
+      <div class="py-6 space-y-4">
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Maryam is currently booking keynote addresses, institutional workshops, and research advisory calls for 2026/2027.
+        </p>
+
+        <div class="space-y-3">
+          <a href="#contact" onclick="document.getElementById('booking-close-btn').click();" class="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-teal-50 dark:hover:bg-teal-900/20 border border-slate-200/80 dark:border-slate-700 transition group">
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400">Direct Collaboration Inquiry</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Send a detailed project scope or speaking brief</p>
+            </div>
+            <i class="uil uil-arrow-right text-lg text-teal-600"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/maryamirekeola" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-purple-50 dark:hover:bg-purple-900/20 border border-slate-200/80 dark:border-slate-700 transition group">
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400">Connect on LinkedIn</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Message directly for prompt professional networking</p>
+            </div>
+            <i class="uil uil-arrow-right text-lg text-purple-600"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p class="text-xs text-slate-400">Looking forward to building impactful work together.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       10. Accessibility Font Scaler Widget
+       ======================================================================== -->
+  <aside class="font-scaler-widget hidden sm:flex" aria-label="Font size controls">
+    <button id="font-scale-plus" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-teal-100 dark:hover:bg-teal-900/50 hover:text-teal-700 transition" aria-label="Increase text size" title="Increase text size">
+      A+
+    </button>
+    <button id="font-scale-reset" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition" aria-label="Reset text size" title="Reset text size">
+      A
+    </button>
+    <button id="font-scale-minus" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-teal-100 dark:hover:bg-teal-900/50 hover:text-teal-700 transition" aria-label="Decrease text size" title="Decrease text size">
+      A-
+    </button>
+  </aside>
+
+  <!-- ========================================================================
+       11. Footer Section
+       ======================================================================== -->
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-5 space-y-4">
+          <span class="font-display font-extrabold text-2xl text-slate-900 dark:text-white">
+            Maryam <span class="text-teal-600 dark:text-teal-400">Irekeola</span>
+          </span>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
+            PhD researcher at Kingston University, UX researcher, and founder of InsightSpace.Co. Exploring decision-making psychology, cognitive biases in sustainability, and research communication.
+          </p>
+          <div class="flex space-x-3 text-slate-500 pt-2">
+            <a href="https://www.linkedin.com/in/maryamirekeola" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-teal-600 hover:text-white transition" aria-label="LinkedIn">
+              <i class="uil uil-linkedin"></i>
+            </a>
+            <a href="https://www.tiktok.com/@Insightspace.co" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-purple-600 hover:text-white transition" aria-label="TikTok">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.33 22a6.34 6.34 0 0 0 6.34-6.33V9.17a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.85-.6z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/insightspace.co" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition" aria-label="Instagram">
+              <i class="uil uil-instagram"></i>
+            </a>
+            <a href="mailto:irekeolamaryam@gmail.com" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-teal-600 hover:text-white transition" aria-label="Email">
+              <i class="uil uil-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-display font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="#about" class="hover:text-teal-600 dark:hover:text-teal-400 transition">About Maryam</a></li>
+            <li><a href="#insightspace" class="hover:text-teal-600 dark:hover:text-teal-400 transition">InsightSpace.Co Community</a></li>
+            <li><a href="#research" class="hover:text-teal-600 dark:hover:text-teal-400 transition">Research & Papers</a></li>
+            <li><a href="#speaking" class="hover:text-teal-600 dark:hover:text-teal-400 transition">Speaking & Workshops</a></li>
+            <li><a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400 transition">Contact & Booking</a></li>
+          </ul>
+        </div>
+
+        <!-- Research Focus -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="font-display font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider">Research Focus</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li>• Leadership Decision Psychology</li>
+            <li>• Cognitive Biases & Sustainability Mandates</li>
+            <li>• EU 6G-VERSUS Circular Indicators</li>
+            <li>• Qualitative UX & Behavioural Data Coding</li>
+            <li>• Research Communication Beyond Academia</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-4">
+        <p>&copy; 2026 Maryam Irekeola. All rights reserved.</p>
+        <p>Built with modern web standards • Inspired by scholar-practitioner leadership design.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
