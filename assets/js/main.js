@@ -67,9 +67,9 @@ function initHeroBadgeCycle() {
   const roles = [
     "PhD Researcher @ Kingston University",
     "Founder of InsightSpace.Co",
-    "UX Researcher & Behavioural Scientist",
+    "6G-VERSUS Research Associate",
     "Speaker & Research Communication Advocate",
-    "Leadership Psychology & Sustainability"
+    "BAM Early Career Academic Network"
   ];
 
   let currentIndex = 0;
@@ -137,18 +137,18 @@ function initSearchModal() {
   const searchCloseBtn = document.getElementById('search-close-btn');
 
   const searchableIndex = [
-    { title: "InsightSpace.Co Community", category: "Venture", desc: "Digital platform & community on TikTok and Instagram translating complex research for PhD scholars.", href: "#insightspace" },
+    { title: "InsightSpace.Co Community", category: "Community", desc: "Digital platform & community on TikTok and Instagram helping PhD researchers communicate their work clearly beyond academia.", href: "#insightspace" },
     { title: "TikTok Channel — @Insightspace.co", category: "Social", desc: "Short-form actionable research communication and PhD insights.", href: "https://www.tiktok.com/@Insightspace.co" },
     { title: "Instagram Community — @insightspace.co", category: "Social", desc: "Visual carousels, academic career design, and researcher mindset content.", href: "https://www.instagram.com/insightspace.co" },
-    { title: "BAM 2026 Conference Paper", category: "Publication", desc: "Decision-Making Under Uncertainty: How Cognitive Biases Shape Leadership Choices in Sustainability Transitions.", href: "#research" },
-    { title: "EU 6G-VERSUS Deliverable", category: "Project", desc: "Multidimensional Framework for Evaluating Environmental, Social, and Economic Impacts of Emerging 6G Technologies.", href: "#research" },
-    { title: "Hackathon Pedagogy Toolkit", category: "UX Project", desc: "University-wide toolkit for staff to plan, deliver, and evaluate hackathon-style learning experiences.", href: "#research" },
-    { title: "Kingston Hive Behavioural Impact Framework", category: "Framework", desc: "Theory of Change and social resilience measurement for grassroots community programs.", href: "#research" },
-    { title: "Keynote & Panel Speaking", category: "Speaking", desc: "Invited talks on Behavioural Science, UX Research, Leadership Psychology, and Emerging Tech.", href: "#speaking" },
-    { title: "Workshop: Translating Research into Industry Action", category: "Workshop", desc: "Interactive workshop for researchers and PhD cohorts on turning academic papers into usable products and policies.", href: "#speaking" },
-    { title: "Workshop: UX Methods for Complex Problem Solving", category: "Workshop", desc: "Applying qualitative UX and behavioural research to strategic business decisions.", href: "#speaking" },
-    { title: "Academic Background & Qualifications", category: "About", desc: "Kingston University PhD Researcher, MSc User Experience Design, BSc Tourism & Hospitality.", href: "#about" },
-    { title: "Book a Consultation or Speaking Inquiry", category: "Contact", desc: "Schedule a discussion for keynotes, workshops, or research collaboration.", href: "#contact" }
+    { title: "BAM 2026 Conference Paper", category: "Publication", desc: "Impact Evaluation in 6G Trials: Integrating Key Value Indicators for Sustainability Assessment.", href: "#research" },
+    { title: "AMCIS 2026 Conference Paper", category: "Publication", desc: "Civic-Integrated Sustainability Assessment of Sixth Generation Technology Innovations: Case of the 6G-VERSUS.", href: "#research" },
+    { title: "EU 6G-VERSUS Project Deliverable", category: "Deliverable", desc: "Horizon Europe sustainability assessment frameworks and multidimensional impact indicators for emerging 6G infrastructure.", href: "#research" },
+    { title: "Toolkit for Lecturers: Run Your Own Hackathon!", category: "Pedagogy", desc: "Kingston University practical guide for higher education staff engaging students with sustainability.", href: "#research" },
+    { title: "EmpowerWIT London Speaking", category: "Speaking", desc: "“You Do Not Have To Have Arrived” — Leadership Beyond Authority on Community and Keynote stages.", href: "#speaking" },
+    { title: "Black Women in Tech Masterclass", category: "Speaking", desc: "Pivot with Purpose: Cognitive biases and structured decision-making in career transitions.", href: "#speaking" },
+    { title: "British Academy of Management (BAM ECAN)", category: "Appointment", desc: "Early Career Academic Network Committee Associate representing ECR community.", href: "#about" },
+    { title: "About Maryam Irekeola", category: "About", desc: "PhD Researcher at Kingston University, 6G-VERSUS Research Associate, and Founder of InsightSpace.Co.", href: "#about" },
+    { title: "Request Collaboration & Contact", category: "Contact", desc: "Get in touch for speaking engagements, research collaboration, or workshops at irekemaryam@gmail.com.", href: "#contact" }
   ];
 
   function openSearch() {
@@ -309,7 +309,7 @@ function initContactForm() {
 
     try {
       const formData = new FormData(form);
-      const response = await fetch("https://formsubmit.co/ajax/irekeolamaryam@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/irekemaryam@gmail.com", {
         method: "POST",
         headers: {
           'Accept': 'application/json'
