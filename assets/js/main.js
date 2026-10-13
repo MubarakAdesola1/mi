@@ -65,11 +65,10 @@ function initHeroBadgeCycle() {
   if (!badgeText || !badgeContainer) return;
 
   const roles = [
-    "PhD Researcher @ Kingston University",
-    "Founder of InsightSpace.Co",
-    "6G-VERSUS Research Associate",
-    "Speaker & Research Communication Advocate",
-    "BAM Early Career Academic Network"
+    "PhD Researcher",
+    "founder of insightSpace.co",
+    "EU Horizon project Research Associate",
+    "Speaker & Research Communication Advocate"
   ];
 
   let currentIndex = 0;
@@ -88,7 +87,7 @@ function initHeroBadgeCycle() {
 
 /* ==========================================================================
    3. Mobile Navigation Drawer
-   ========================================================================== */
+   ========================================================================= */
 function initMobileNav() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const closeBtn = document.getElementById('mobile-menu-close');
@@ -144,10 +143,10 @@ function initSearchModal() {
     { title: "AMCIS 2026 Conference Paper", category: "Publication", desc: "Civic-Integrated Sustainability Assessment of Sixth Generation Technology Innovations: Case of the 6G-VERSUS.", href: "#research" },
     { title: "EU 6G-VERSUS Project Deliverable", category: "Deliverable", desc: "Horizon Europe sustainability assessment frameworks and multidimensional impact indicators for emerging 6G infrastructure.", href: "#research" },
     { title: "Toolkit for Lecturers: Run Your Own Hackathon!", category: "Pedagogy", desc: "Kingston University practical guide for higher education staff engaging students with sustainability.", href: "#research" },
-    { title: "EmpowerWIT London Speaking", category: "Speaking", desc: "“You Do Not Have To Have Arrived” — Leadership Beyond Authority on Community and Keynote stages.", href: "#speaking" },
-    { title: "Black Women in Tech Masterclass", category: "Speaking", desc: "Pivot with Purpose: Cognitive biases and structured decision-making in career transitions.", href: "#speaking" },
+    { title: "EmpowerWIT London Speaking", category: "Speaking", desc: "“You Do Not Have To Have Arrived” (Leadership Beyond Authority) on Community and Keynote stages.", href: "#speaking" },
+    { title: "Black Women in Tech Masterclass", category: "Speaking", desc: "Pivot with Purpose: Cognitive biases and structured decision making in career transitions.", href: "#speaking" },
     { title: "British Academy of Management (BAM ECAN)", category: "Appointment", desc: "Early Career Academic Network Committee Associate representing ECR community.", href: "#about" },
-    { title: "About Maryam Irekeola", category: "About", desc: "PhD Researcher at Kingston University, 6G-VERSUS Research Associate, and Founder of InsightSpace.Co.", href: "#about" },
+    { title: "About Maryam Irekeola", category: "About", desc: "PhD Researcher, 6G-VERSUS Research Associate, and Founder of InsightSpace.Co.", href: "#about" },
     { title: "Request Collaboration & Contact", category: "Contact", desc: "Get in touch for speaking engagements, research collaboration, or workshops at irekemaryam@gmail.com.", href: "#contact" }
   ];
 
