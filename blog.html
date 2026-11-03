@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &amp; Publications — Maryam Irekeola, PhD</title>
+  <meta name="description" content="Articles, analytical essays, books, and publications by Maryam Irekeola, PhD. Read online, share insights, or download research documents." />
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            teal: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a', 950: '#042f2e',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Dark Mode Init -->
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-300 selection:bg-teal-500 selection:text-white">
+
+  <!-- ========================================================================
+       1. Navigation Bar
+       ======================================================================== -->
+  <header class="nav-fixed bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Avatar & Back Home -->
+      <a href="/" class="flex items-center gap-3 group" aria-label="Maryam Irekeola — Home">
+        <img src="assets/img/maryam-avatar.jpg" alt="Maryam Irekeola" class="w-12 h-12 rounded-full object-cover object-top border-2 border-teal-500 shadow-sm group-hover:scale-105 transition duration-300" />
+        <div class="hidden sm:block">
+          <div class="font-display font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition leading-tight">Maryam Irekeola</div>
+          <div class="text-xs text-teal-600 dark:text-teal-400 font-medium">PhD Researcher &amp; Author</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+        <a href="/#about" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">About</a>
+        <a href="/#insightspace" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-purple-500"></span>
+          InsightSpace.Co
+        </a>
+        <a href="/#research" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Research &amp; Papers</a>
+        <a href="/#speaking" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Speaking</a>
+        
+        <!-- Active Blog & Publications Tab -->
+        <a href="/blog" class="px-3.5 py-2 text-sm font-semibold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 rounded-lg transition flex items-center gap-1.5 border border-teal-200/60 dark:border-teal-800/60">
+          <i class="uil uil-newspaper"></i>
+          <span>Blog &amp; Library</span>
+        </a>
+
+        <a href="/#contact" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Contact</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center space-x-2.5">
+        <!-- Live Realtime Badge -->
+        <div id="realtime-status-pill" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 text-xs font-medium border border-teal-200 dark:border-teal-800/80">
+          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+          <span class="text-[11px]">Live Sync</span>
+        </div>
+
+        <!-- Dark/Light Mode Switcher -->
+        <button id="theme-toggle" class="p-2.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+          <i class="uil uil-moon text-lg dark:hidden"></i>
+          <i class="uil uil-sun text-lg hidden dark:block text-amber-400"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Open menu">
+          <i class="uil uil-bars text-xl"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-6 space-y-1">
+      <a href="/#about" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">About</a>
+      <a href="/#insightspace" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">InsightSpace.Co</a>
+      <a href="/#research" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Research &amp; Papers</a>
+      <a href="/#speaking" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Speaking</a>
+      <a href="/blog" class="block py-2 text-sm font-semibold text-teal-600 dark:text-teal-400">Blog &amp; Library</a>
+      <a href="/#contact" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Contact</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. Hero Section & View Switcher
+       ======================================================================== -->
+  <main class="flex-grow">
+    <section class="relative pt-12 pb-8 overflow-hidden">
+      <!-- Glow Gradients -->
+      <div class="absolute top-10 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-72 bg-gradient-to-r from-teal-500/10 via-purple-500/10 to-teal-500/10 blur-3xl pointer-events-none -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Eyebrow Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/80 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <i class="uil uil-newspaper"></i>
+          <span>Maryam Irekeola • Knowledge &amp; Research Hub</span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
+          Articles, Blog &amp; Publications
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+          Explore analytical essays, research toolkits, and publications by Maryam Irekeola, PhD. Switch between articles and books, share insights, or download documents.
+        </p>
+
+        <!-- Segmented Mode Switcher: Blog Posts <-> Books -->
+        <div class="flex items-center justify-center mb-8">
+          <div class="inline-flex p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 shadow-inner">
+            <button id="mode-btn-blogs" onclick="switchMode('blogs')" class="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition shadow-sm bg-white dark:bg-slate-800 text-teal-600 dark:text-teal-400">
+              <i class="uil uil-newspaper text-base"></i>
+              <span>Blog Posts</span>
+              <span id="badge-blogs-count" class="ml-1 text-[11px] px-2 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-600 border border-teal-200 dark:border-teal-800">0</span>
+            </button>
+            <button id="mode-btn-books" onclick="switchMode('books')" class="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              <i class="uil uil-book-alt text-base"></i>
+              <span>Books &amp; Publications</span>
+              <span id="badge-books-count" class="ml-1 text-[11px] px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="max-w-3xl mx-auto mb-8 space-y-4">
+          <!-- Search Bar -->
+          <div class="relative">
+            <i class="uil uil-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search by title, topic, or keyword..."
+              class="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-500 transition"
+            />
+            <button id="clear-search" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
+              <i class="uil uil-times"></i>
+            </button>
+          </div>
+
+          <!-- Category Filter Pills (Dynamically loaded from Neon) -->
+          <div id="category-filters" class="flex flex-wrap items-center justify-center gap-2 pt-1">
+            <button data-cat="All" class="cat-pill active px-4 py-2 rounded-xl text-xs font-semibold bg-teal-600 text-white shadow-sm transition">
+              All
+            </button>
+            <span class="text-xs text-slate-400 italic">Loading categories...</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. Dynamic Bento Grid
+         ======================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      
+      <!-- Loading Spinner -->
+      <div id="items-loading" class="text-center py-16">
+        <div class="inline-block w-8 h-8 border-3 border-teal-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Fetching from Neon...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="items-empty" class="hidden text-center py-16 max-w-md mx-auto">
+        <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center mx-auto mb-4 text-slate-400 text-2xl">
+          <i class="uil uil-folder-open"></i>
+        </div>
+        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">No items found</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4" id="empty-state-msg">No results matching your current filters.</p>
+        <button onclick="resetFilters()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-teal-600 text-white hover:bg-teal-700 transition">
+          <i class="uil uil-redo"></i> Reset Filters
+        </button>
+      </div>
+
+      <!-- Items Grid (Bento Layout) -->
+      <div id="items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 hidden">
+        <!-- Filled dynamically via JS -->
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       4. PDF Reader Modal (For Books)
+       ======================================================================== -->
+  <div id="pdf-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
+    <div class="relative w-full max-w-5xl h-[92vh] bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden">
+      <!-- Modal Header -->
+      <div class="h-14 px-4 sm:px-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/70 dark:bg-slate-900/70">
+        <div class="flex items-center gap-3 truncate">
+          <i class="uil uil-file-alt text-teal-600 dark:text-teal-400 text-xl shrink-0"></i>
+          <div class="truncate">
+            <h4 id="modal-doc-title" class="font-display font-bold text-xs sm:text-sm text-slate-900 dark:text-white truncate">Publication Preview</h4>
+            <p id="modal-doc-author" class="text-[11px] text-slate-500 dark:text-slate-400 truncate">Maryam Irekeola, PhD</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="modal-download-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition">
+            <i class="uil uil-download-alt"></i>
+            <span class="hidden sm:inline">Download</span>
+          </button>
+          <a id="modal-newtab-btn" href="#" target="_blank" class="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Open in new window">
+            <i class="uil uil-external-link-alt text-base"></i>
+          </a>
+          <button id="modal-close-btn" class="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Close modal">
+            <i class="uil uil-times text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (PDF Viewer) -->
+      <div class="flex-grow bg-slate-100 dark:bg-slate-950 relative">
+        <iframe id="modal-pdf-iframe" src="" class="w-full h-full border-0" title="PDF Document Viewer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       6. Download Gate Modal (Lead Capture for Books)
+       ======================================================================== -->
+  <div id="download-gate-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8">
+      
+      <button id="gate-modal-close" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Close">
+        <i class="uil uil-times text-lg"></i>
+      </button>
+
+      <div class="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center text-2xl mb-4">
+        <i class="uil uil-file-download-alt"></i>
+      </div>
+
+      <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-1.5">Download Publication</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
+        You are requesting a complimentary copy of:
+      </p>
+      <div id="gate-doc-title" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400 mb-5 line-clamp-2">
+        Publication Document
+      </div>
+
+      <form id="gate-download-form" class="space-y-4">
+        <input type="hidden" id="gate-book-id" value="" />
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Full Name</label>
+          <div class="relative">
+            <i class="uil uil-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input id="gate-name" type="text" required placeholder="e.g. Dr. Jane Doe" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-teal-500" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Email Address</label>
+          <div class="relative">
+            <i class="uil uil-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input id="gate-email" type="email" required placeholder="jane.doe@university.edu" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-teal-500" />
+          </div>
+          <span class="block text-[11px] text-slate-400 mt-1">We will log your request and provide immediate access.</span>
+        </div>
+
+        <button type="submit" id="gate-submit-btn" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-md shadow-teal-600/20 transition flex items-center justify-center gap-2">
+          <i class="uil uil-download-alt"></i>
+          <span>Confirm &amp; Download PDF</span>
+        </button>
+      </form>
+
+      <div id="gate-success-msg" class="hidden text-center py-6">
+        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2 text-xl">
+          <i class="uil uil-check"></i>
+        </div>
+        <div class="font-bold text-sm text-slate-900 dark:text-white mb-1">Download Verified!</div>
+        <p class="text-xs text-slate-500">Your PDF download is initiating automatically now...</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       7. Interactive Share Dialog Modal
+       ======================================================================== -->
+  <div id="share-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8">
+      
+      <button id="share-modal-close" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Close share dialog">
+        <i class="uil uil-times text-lg"></i>
+      </button>
+
+      <div class="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center text-2xl mb-4">
+        <i class="uil uil-share-alt"></i>
+      </div>
+
+      <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-1">Share Article</h3>
+      <p id="share-doc-title" class="text-xs text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">
+        Article Title
+      </p>
+
+      <!-- Share Channels Grid -->
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <!-- WhatsApp -->
+        <a id="share-whatsapp-btn" href="#" target="_blank" class="flex items-center gap-2.5 p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 hover:bg-emerald-100 transition text-xs font-semibold">
+          <i class="uil uil-whatsapp text-lg text-emerald-600"></i>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a id="share-linkedin-btn" href="#" target="_blank" class="flex items-center gap-2.5 p-3 rounded-2xl bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60 hover:bg-sky-100 transition text-xs font-semibold">
+          <i class="uil uil-linkedin text-lg text-sky-600"></i>
+          <span>LinkedIn</span>
+        </a>
+
+        <!-- X (Twitter) -->
+        <a id="share-twitter-btn" href="#" target="_blank" class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+          <i class="uil uil-twitter text-lg text-slate-900 dark:text-white"></i>
+          <span>X (Twitter)</span>
+        </a>
+
+        <!-- Facebook -->
+        <a id="share-facebook-btn" href="#" target="_blank" class="flex items-center gap-2.5 p-3 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 hover:bg-blue-100 transition text-xs font-semibold">
+          <i class="uil uil-facebook text-lg text-blue-600"></i>
+          <span>Facebook</span>
+        </a>
+      </div>
+
+      <!-- Copy Direct Link -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Direct Link</label>
+        <div class="flex items-center gap-2">
+          <input id="share-link-input" type="text" readonly class="flex-1 px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-600 dark:text-slate-400 truncate" />
+          <button id="share-copy-btn" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition flex items-center gap-1.5 shrink-0">
+            <i class="uil uil-copy"></i>
+            <span id="copy-btn-text">Copy</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-4 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold shadow-xl flex items-center gap-2 transition transform translate-y-2">
+    <i class="uil uil-check-circle text-teal-400 text-base"></i>
+    <span id="toast-msg">Link copied to clipboard!</span>
+  </div>
+
+  <!-- ========================================================================
+       8. Footer
+       ======================================================================== -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span>&copy; 2026 Maryam Irekeola, PhD. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/" class="hover:text-teal-600 transition">Home</a>
+        <a href="/blog" class="hover:text-teal-600 transition font-semibold text-teal-600">Blog &amp; Library</a>
+        <a href="/#research" class="hover:text-teal-600 transition">Research</a>
+        <a href="/#contact" class="hover:text-teal-600 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       9. Client JavaScript Logic
+       ======================================================================== -->
+  <script>
+    // Theme Switcher
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle?.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    // Mobile Menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // State
+    let currentMode = 'blogs'; // 'blogs' or 'books'
+    let currentCategory = 'All';
+    let currentSearch = '';
+    let allCategoriesList = [];
+    let activeBlogPosts = [];
+    let activeBooks = [];
+    let currentOpenBlog = null;
+
+    // Toast helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      if (!toast || !toastMsg) return;
+      toastMsg.innerText = msg;
+      toast.classList.remove('hidden', 'translate-y-2');
+      setTimeout(() => {
+        toast.classList.add('hidden', 'translate-y-2');
+      }, 2500);
+    }
+
+    // Switch Mode: 'blogs' <-> 'books'
+    function switchMode(mode) {
+      currentMode = mode;
+      const btnBlogs = document.getElementById('mode-btn-blogs');
+      const btnBooks = document.getElementById('mode-btn-books');
+      const searchInput = document.getElementById('search-input');
+
+      if (mode === 'blogs') {
+        btnBlogs.className = 'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition shadow-sm bg-white dark:bg-slate-800 text-teal-600 dark:text-teal-400';
+        btnBooks.className = 'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+        searchInput.placeholder = 'Search blog articles by title, topic, or keyword...';
+      } else {
+        btnBooks.className = 'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition shadow-sm bg-white dark:bg-slate-800 text-teal-600 dark:text-teal-400';
+        btnBlogs.className = 'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+        searchInput.placeholder = 'Search publications by title, topic, or keyword...';
+      }
+
+      // Update URL query parameter without full reload
+      const url = new URL(window.location);
+      url.searchParams.set('tab', mode);
+      window.history.replaceState({}, '', url);
+
+      renderCurrentMode();
+    }
+
+    // Load Categories from Neon
+    async function loadCategories() {
+      try {
+        const res = await fetch('/api/categories');
+        const data = await res.json();
+        if (data.success && data.categories) {
+          allCategoriesList = data.categories;
+          renderCategoryPills(allCategoriesList);
+        }
+      } catch (err) {
+        console.error('Failed to load categories:', err);
+      }
+    }
+
+    function renderCategoryPills(categories) {
+      const filtersEl = document.getElementById('category-filters');
+      if (!filtersEl) return;
+      filtersEl.innerHTML = `
+        <button data-cat="All" class="cat-pill ${currentCategory === 'All' ? 'active bg-teal-600 text-white font-semibold' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium'} px-4 py-2 rounded-xl text-xs shadow-sm transition">
+          All
+        </button>
+      `;
+
+      categories.forEach((cat) => {
+        const pill = document.createElement('button');
+        pill.setAttribute('data-cat', cat.name);
+        pill.className = `cat-pill ${currentCategory === cat.name ? 'active bg-teal-600 text-white font-semibold' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium'} px-4 py-2 rounded-xl text-xs shadow-sm transition`;
+        pill.textContent = cat.name;
+        filtersEl.appendChild(pill);
+      });
+
+      // Bind click
+      filtersEl.querySelectorAll('.cat-pill').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filtersEl.querySelectorAll('.cat-pill').forEach((b) => {
+            b.classList.remove('active', 'bg-teal-600', 'text-white', 'font-semibold');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'font-medium');
+          });
+          btn.classList.add('active', 'bg-teal-600', 'text-white', 'font-semibold');
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'font-medium');
+
+          currentCategory = btn.getAttribute('data-cat') || 'All';
+          loadData();
+        });
+      });
+    }
+
+    function resetFilters() {
+      currentCategory = 'All';
+      currentSearch = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      renderCategoryPills(allCategoriesList);
+      loadData();
+    }
+
+    // Search Input with Debounce
+    const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search');
+    let searchTimeout = null;
+
+    searchInput?.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      currentSearch = val;
+      if (val) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        loadData();
+      }, 250);
+    });
+
+    clearSearchBtn?.addEventListener('click', () => {
+      searchInput.value = '';
+      currentSearch = '';
+      clearSearchBtn.classList.add('hidden');
+      loadData();
+    });
+
+    // Fetch and Load Data
+    async function loadData() {
+      const loadingEl = document.getElementById('items-loading');
+      const emptyEl = document.getElementById('items-empty');
+      const gridEl = document.getElementById('items-grid');
+
+      loadingEl.classList.remove('hidden');
+      emptyEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      try {
+        const catParam = currentCategory !== 'All' ? `category=${encodeURIComponent(currentCategory)}` : '';
+        const searchParam = currentSearch ? `search=${encodeURIComponent(currentSearch)}` : '';
+        const query = [catParam, searchParam].filter(Boolean).join('&');
+        const qs = query ? `?${query}` : '';
+
+        // Fetch both blogs and books in parallel
+        const [blogsRes, booksRes] = await Promise.all([
+          fetch(`/api/blogs${qs}`).then((r) => r.json()),
+          fetch(`/api/books${qs}`).then((r) => r.json()),
+        ]);
+
+        if (blogsRes.success) activeBlogPosts = blogsRes.blogs || [];
+        if (booksRes.success) activeBooks = booksRes.books || [];
+
+        // Update counts
+        document.getElementById('badge-blogs-count').innerText = activeBlogPosts.length;
+        document.getElementById('badge-books-count').innerText = activeBooks.length;
+
+        renderCurrentMode();
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        loadingEl.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+        document.getElementById('empty-state-msg').innerText = 'Failed to load content from server.';
+      }
+    }
+
+    // Render Current Mode
+    function renderCurrentMode() {
+      const loadingEl = document.getElementById('items-loading');
+      const emptyEl = document.getElementById('items-empty');
+      const gridEl = document.getElementById('items-grid');
+
+      loadingEl.classList.add('hidden');
+
+      if (currentMode === 'blogs') {
+        if (activeBlogPosts.length === 0) {
+          emptyEl.classList.remove('hidden');
+          gridEl.classList.add('hidden');
+          document.getElementById('empty-state-msg').innerText = 'No blog articles matching your filter criteria.';
+          return;
+        }
+        emptyEl.classList.add('hidden');
+        gridEl.classList.remove('hidden');
+        renderBlogs(activeBlogPosts);
+      } else {
+        if (activeBooks.length === 0) {
+          emptyEl.classList.remove('hidden');
+          gridEl.classList.add('hidden');
+          document.getElementById('empty-state-msg').innerText = 'No publications matching your filter criteria.';
+          return;
+        }
+        emptyEl.classList.add('hidden');
+        gridEl.classList.remove('hidden');
+        renderBooks(activeBooks);
+      }
+    }
+
+    // Render Blogs Grid
+    function renderBlogs(blogs) {
+      const gridEl = document.getElementById('items-grid');
+      gridEl.innerHTML = '';
+
+      blogs.forEach((post) => {
+        const card = document.createElement('article');
+        card.className = 'group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm hover:shadow-xl hover:border-teal-500/40 transition duration-300 flex flex-col justify-between';
+
+        const coverSrc = post.cover_url || 'assets/img/maryam-avatar.jpg';
+        const displayCat = post.category || 'General';
+        const dateFormatted = new Date(post.created_at).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        });
+
+        card.innerHTML = `
+          <div>
+            <!-- Cover & Badge -->
+            <a href="/blog/${post.id}" class="block h-44 w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800 relative group-hover:scale-[1.01] transition duration-300 border border-slate-100 dark:border-slate-800">
+              <img src="${escapeHtml(coverSrc)}" alt="${escapeHtml(post.title)}" class="w-full h-full object-cover object-top" onerror="this.src='assets/img/maryam-avatar.jpg'" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end justify-between p-3">
+                <span class="text-white text-[11px] font-medium flex items-center gap-1.5 backdrop-blur-xs px-2.5 py-0.5 rounded bg-black/40">
+                  <i class="uil uil-clock text-teal-400"></i> ${escapeHtml(post.read_time || '4 min read')}
+                </span>
+                <span class="text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-teal-600/90 backdrop-blur-xs">
+                  ${escapeHtml(displayCat)}
+                </span>
+              </div>
+            </a>
+
+            <!-- Title & Author -->
+            <h3 class="font-display font-bold text-base text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition line-clamp-2 mb-1.5 leading-snug">
+              <a href="/blog/${post.id}">${escapeHtml(post.title)}</a>
+            </h3>
+            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2.5">
+              <span class="font-medium text-teal-600 dark:text-teal-400">${escapeHtml(post.author || 'Maryam Irekeola, PhD')}</span>
+              <span class="text-[11px]">${dateFormatted}</span>
+            </div>
+
+            <!-- Excerpt -->
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+              ${escapeHtml(post.excerpt || 'Read full analysis and research perspective by Maryam Irekeola, PhD.')}
+            </p>
+          </div>
+
+          <!-- Actions: Read & Share -->
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2 mt-2">
+            <a href="/blog/${post.id}" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-sm transition">
+              <i class="uil uil-book-reader text-sm"></i>
+              <span>Read Article</span>
+            </a>
+            <button onclick="openShareModal('${post.id}', '${escapeAttr(post.title)}', '${escapeAttr(post.excerpt || '')}')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 hover:text-teal-600 dark:hover:text-teal-400 text-slate-600 dark:text-slate-300 text-sm transition" title="Share Article">
+              <i class="uil uil-share-alt"></i>
+            </button>
+          </div>
+        `;
+
+        gridEl.appendChild(card);
+      });
+    }
+
+    // Render Books Grid
+    function renderBooks(books) {
+      const gridEl = document.getElementById('items-grid');
+      gridEl.innerHTML = '';
+
+      books.forEach((book) => {
+        const card = document.createElement('article');
+        card.className = 'group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm hover:shadow-xl hover:border-teal-500/40 transition duration-300 flex flex-col justify-between';
+
+        const coverSrc = book.cover_url || 'assets/img/maryam-avatar.jpg';
+        const displayCat = book.category || 'General';
+
+        card.innerHTML = `
+          <div>
+            <!-- Category Badge -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 border border-teal-200/80 dark:border-teal-800">
+                ${escapeHtml(displayCat)}
+              </span>
+            </div>
+
+            <!-- Cover Image -->
+            <div class="h-44 w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800 relative group-hover:scale-[1.01] transition duration-300 border border-slate-100 dark:border-slate-800">
+              <img src="${escapeHtml(coverSrc)}" alt="${escapeHtml(book.title)}" class="w-full h-full object-cover object-top" onerror="this.src='assets/img/maryam-avatar.jpg'" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
+                <span class="text-white text-[11px] font-medium flex items-center gap-1.5 backdrop-blur-xs px-2 py-0.5 rounded bg-black/40">
+                  <i class="uil uil-file-alt text-teal-400"></i> ${book.page_count ? book.page_count + ' Pages' : 'PDF Document'}
+                </span>
+              </div>
+            </div>
+
+            <!-- Title & Author -->
+            <h3 class="font-display font-bold text-base text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition line-clamp-2 mb-1.5 leading-snug">
+              ${escapeHtml(book.title)}
+            </h3>
+            <p class="text-xs text-teal-600 dark:text-teal-400 font-medium mb-2.5">
+              ${escapeHtml(book.author || 'Maryam Irekeola, PhD')}
+            </p>
+
+            <!-- Description -->
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+              ${escapeHtml(book.description || 'Official document and publication stored securely on Neon.')}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2 mt-2">
+            <button onclick="openReader('${book.id}', '${escapeAttr(book.view_url || book.pdf_url)}', '${escapeAttr(book.download_url || book.pdf_url)}', '${escapeAttr(book.title)}', '${escapeAttr(book.author)}')" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-sm transition">
+              <i class="uil uil-book-reader text-sm"></i>
+              <span>Read Online</span>
+            </button>
+            <button onclick="promptDownload('${book.id}', '${escapeAttr(book.title)}')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm transition" title="Download PDF">
+              <i class="uil uil-download-alt"></i>
+            </button>
+          </div>
+        `;
+
+        gridEl.appendChild(card);
+      });
+    }
+
+    // ========================================================================
+    // Share Dialog Logic
+    // ========================================================================
+    const shareModal = document.getElementById('share-modal');
+    const shareModalClose = document.getElementById('share-modal-close');
+    const shareDocTitle = document.getElementById('share-doc-title');
+    const shareLinkInput = document.getElementById('share-link-input');
+    const shareCopyBtn = document.getElementById('share-copy-btn');
+    const copyBtnText = document.getElementById('copy-btn-text');
+
+    const shareWhatsappBtn = document.getElementById('share-whatsapp-btn');
+    const shareLinkedinBtn = document.getElementById('share-linkedin-btn');
+    const shareTwitterBtn = document.getElementById('share-twitter-btn');
+    const shareFacebookBtn = document.getElementById('share-facebook-btn');
+
+    async function openShareModal(id, title, excerpt) {
+      const shareUrl = `${window.location.origin}/blog/${id}`;
+      const shareText = `${title} — by Maryam Irekeola, PhD`;
+
+      // If mobile supports native Web Share API
+      if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+        try {
+          await navigator.share({
+            title: title,
+            text: excerpt || title,
+            url: shareUrl,
+          });
+          return;
+        } catch (e) {
+          // Fall back to modal if user canceled or rejected
+        }
+      }
+
+      shareDocTitle.innerText = title;
+      shareLinkInput.value = shareUrl;
+
+      // Construct Social URLs
+      shareWhatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+      shareLinkedinBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      shareTwitterBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+      shareFacebookBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+
+      copyBtnText.innerText = 'Copy';
+      shareModal.classList.remove('hidden');
+    }
+
+    function closeShareModal() {
+      shareModal.classList.add('hidden');
+    }
+
+    shareModalClose?.addEventListener('click', closeShareModal);
+    shareModal?.addEventListener('click', (e) => {
+      if (e.target === shareModal) closeShareModal();
+    });
+
+    shareCopyBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareLinkInput.value);
+        copyBtnText.innerText = 'Copied!';
+        showToast('Direct link copied to clipboard!');
+        setTimeout(() => {
+          copyBtnText.innerText = 'Copy';
+        }, 2000);
+      } catch (e) {
+        shareLinkInput.select();
+        document.execCommand('copy');
+        copyBtnText.innerText = 'Copied!';
+        showToast('Direct link copied to clipboard!');
+      }
+    });
+
+    // ========================================================================
+    // PDF Viewer & Lead Capture Logic (For Books)
+    // ========================================================================
+    const pdfModal = document.getElementById('pdf-modal');
+    const pdfIframe = document.getElementById('modal-pdf-iframe');
+    const docTitle = document.getElementById('modal-doc-title');
+    const docAuthor = document.getElementById('modal-doc-author');
+    const docDownloadBtn = document.getElementById('modal-download-btn');
+    const docNewtabBtn = document.getElementById('modal-newtab-btn');
+    const pdfCloseBtn = document.getElementById('modal-close-btn');
+
+    let currentReaderBookId = null;
+    let currentReaderTitle = '';
+
+    function openReader(bookId, viewUrl, downloadUrl, title, author) {
+      currentReaderBookId = bookId;
+      currentReaderTitle = title || 'Document';
+      docTitle.textContent = currentReaderTitle;
+      docAuthor.textContent = author || 'Maryam Irekeola, PhD';
+      docNewtabBtn.href = viewUrl;
+      pdfIframe.src = viewUrl;
+      pdfModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    docDownloadBtn?.addEventListener('click', () => {
+      if (currentReaderBookId) {
+        promptDownload(currentReaderBookId, currentReaderTitle);
+      }
+    });
+
+    function closeReader() {
+      pdfModal.classList.add('hidden');
+      pdfIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    pdfCloseBtn?.addEventListener('click', closeReader);
+    pdfModal?.addEventListener('click', (e) => {
+      if (e.target === pdfModal) closeReader();
+    });
+
+    // Lead Capture Download Gate Modal logic
+    const gateModal = document.getElementById('download-gate-modal');
+    const gateModalClose = document.getElementById('gate-modal-close');
+    const gateDocTitle = document.getElementById('gate-doc-title');
+    const gateBookIdInput = document.getElementById('gate-book-id');
+    const gateDownloadForm = document.getElementById('gate-download-form');
+    const gateNameInput = document.getElementById('gate-name');
+    const gateEmailInput = document.getElementById('gate-email');
+    const gateSubmitBtn = document.getElementById('gate-submit-btn');
+    const gateSuccessMsg = document.getElementById('gate-success-msg');
+
+    function promptDownload(bookId, title) {
+      gateBookIdInput.value = bookId;
+      gateDocTitle.textContent = title || 'Publication Document';
+      gateSuccessMsg.classList.add('hidden');
+      gateDownloadForm.classList.remove('hidden');
+      gateModal.classList.remove('hidden');
+      setTimeout(() => gateNameInput.focus(), 100);
+    }
+
+    function closeGateModal() {
+      gateModal.classList.add('hidden');
+    }
+
+    gateModalClose?.addEventListener('click', closeGateModal);
+    gateModal?.addEventListener('click', (e) => {
+      if (e.target === gateModal) closeGateModal();
+    });
+
+    gateDownloadForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const bookId = gateBookIdInput.value;
+      const name = gateNameInput.value.trim();
+      const email = gateEmailInput.value.trim();
+
+      if (!name || !email) return;
+
+      gateSubmitBtn.disabled = true;
+      gateSubmitBtn.innerHTML = `<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span> <span>Verifying &amp; Preparing Download...</span>`;
+
+      try {
+        const res = await fetch(`/api/books/${bookId}/capture-download`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email }),
+        });
+        const data = await res.json();
+        if (data.success && data.download_url) {
+          gateDownloadForm.classList.add('hidden');
+          gateSuccessMsg.classList.remove('hidden');
+
+          // Trigger download automatically
+          const a = document.createElement('a');
+          a.href = data.download_url;
+          a.download = '';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          // Close modal after brief success message
+          setTimeout(() => {
+            closeGateModal();
+            gateDownloadForm.reset();
+            gateSubmitBtn.disabled = false;
+            gateSubmitBtn.innerHTML = `<i class="uil uil-download-alt"></i> <span>Confirm &amp; Download PDF</span>`;
+          }, 1800);
+        } else {
+          alert(data.error || 'Failed to process download.');
+          gateSubmitBtn.disabled = false;
+          gateSubmitBtn.innerHTML = `<i class="uil uil-download-alt"></i> <span>Confirm &amp; Download PDF</span>`;
+        }
+      } catch (err) {
+        alert('Network error connecting to server.');
+        gateSubmitBtn.disabled = false;
+        gateSubmitBtn.innerHTML = `<i class="uil uil-download-alt"></i> <span>Confirm &amp; Download PDF</span>`;
+      }
+    });
+
+    // Escape Key Listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeReader();
+        closeBlogModal();
+        closeShareModal();
+        closeGateModal();
+      }
+    });
+
+    // ========================================================================
+    // Neon Realtime SSE Event Stream
+    // ========================================================================
+    function initRealtime() {
+      try {
+        const eventSource = new EventSource('/api/realtime/stream');
+        const pill = document.getElementById('realtime-status-pill');
+
+        eventSource.onopen = () => {
+          if (pill) pill.classList.remove('opacity-50');
+        };
+
+        eventSource.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            if (['BOOK_CREATED', 'BOOK_UPDATED', 'BOOK_DELETED', 'BLOG_CREATED', 'BLOG_UPDATED', 'BLOG_DELETED', 'CATEGORY_CREATED', 'CATEGORY_DELETED', 'BOOKS_REFRESH', 'BLOGS_REFRESH'].includes(data.type)) {
+              loadCategories();
+              loadData();
+            }
+          } catch (e) {}
+        };
+
+        eventSource.onerror = () => {
+          if (pill) pill.classList.add('opacity-50');
+        };
+      } catch (err) {
+        console.error('SSE initialization error:', err);
+      }
+    }
+
+    // Helper: Escape HTML & Attributes
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeAttr(str) {
+      if (!str) return '';
+      return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    // Initial Execution
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check query parameter ?tab=books or ?tab=blogs
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      if (tabParam === 'books') {
+        switchMode('books');
+      } else {
+        switchMode('blogs');
+      }
+
+      loadCategories();
+      loadData().then(() => {
+        // If post parameter provided in URL, navigate to its dedicated page
+        const postParam = params.get('post');
+        if (postParam) {
+          window.location.href = `/blog/${postParam}`;
+        }
+      });
+
+      initRealtime();
+    });
+  </script>
+</body>
+</html>
+

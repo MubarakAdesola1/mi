@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Portal — Knowledge &amp; Publications Hub</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            teal: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a', 950: '#042f2e',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Dark Mode Init -->
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/custom.css" />
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- ========================================================================
+       1. Top Header
+       ======================================================================== -->
+  <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-base shadow-sm group-hover:scale-105 transition">
+            <i class="uil uil-shield-check"></i>
+          </span>
+          <div>
+            <div class="font-display font-bold text-sm text-slate-900 dark:text-white leading-tight">Executive Studio</div>
+            <div class="text-[10px] text-teal-600 dark:text-teal-400 font-semibold uppercase tracking-wider">Secret Route: /fish</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <a href="/blog" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1">
+          <i class="uil uil-external-link-alt"></i>
+          <span class="hidden sm:inline">Visit Live Hub</span>
+        </a>
+
+        <!-- Dark/Light Theme -->
+        <button id="theme-btn" class="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+          <i class="uil uil-moon text-base dark:hidden"></i>
+          <i class="uil uil-sun text-base hidden dark:block text-amber-400"></i>
+        </button>
+
+        <!-- Logout Button (Shown when logged in) -->
+        <button id="logout-btn" class="hidden px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold hover:bg-rose-100 transition flex items-center gap-1">
+          <i class="uil uil-signout"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. Login Section (Shown when unauthenticated)
+       ======================================================================== -->
+  <section id="login-section" class="flex-grow flex items-center justify-center px-4 py-16">
+    <div class="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-xl">
+      
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center mx-auto mb-3 text-2xl shadow-inner">
+          <i class="uil uil-lock-access"></i>
+        </div>
+        <h2 class="font-display font-extrabold text-xl text-slate-900 dark:text-white">Admin Authentication</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sign in with your Neon Lakebase Postgres credentials.</p>
+      </div>
+
+      <div id="login-error" class="hidden mb-4 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-600 dark:text-rose-300 text-xs flex items-center gap-2">
+        <i class="uil uil-exclamation-triangle text-base shrink-0"></i>
+        <span id="login-error-msg">Invalid credentials.</span>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Username</label>
+          <div class="relative">
+            <i class="uil uil-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input id="login-username" type="text" value="admin" required class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-teal-500" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Password</label>
+          <div class="relative">
+            <i class="uil uil-key-skeleton absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input id="login-password" type="password" value="admin123" required class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-teal-500" />
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-md shadow-teal-600/20 transition flex items-center justify-center gap-2">
+          <span>Sign In to Dashboard</span>
+          <i class="uil uil-arrow-right"></i>
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. Admin Dashboard (Shown when authenticated)
+       ======================================================================== -->
+  <section id="dashboard-section" class="hidden flex-grow py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Overview Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <h1 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white">Knowledge &amp; Studio Portal</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Manage blog articles, publications, reader leads, and categories on Neon Lakebase.</p>
+        </div>
+
+        <!-- Tab Switcher -->
+        <div class="flex flex-wrap p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 gap-1 self-start sm:self-auto">
+          <button id="tab-btn-blogs" class="tab-btn active px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm transition">
+            <i class="uil uil-newspaper mr-1"></i> Blog Posts (<span id="blogs-count">0</span>)
+          </button>
+          <button id="tab-btn-write-blog" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="uil uil-pen mr-1"></i> Publish Blog
+          </button>
+          <button id="tab-btn-books" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="uil uil-books mr-1"></i> Books (<span id="books-count">0</span>)
+          </button>
+          <button id="tab-btn-leads" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1">
+            <i class="uil uil-users-alt"></i>
+            <span>Leads (<span id="leads-count">0</span>)</span>
+          </button>
+          <button id="tab-btn-upload" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="uil uil-upload mr-1"></i> Upload PDF
+          </button>
+          <button id="tab-btn-write" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="uil uil-file-bookmark-alt mr-1"></i> Text to PDF
+          </button>
+          <button id="tab-btn-cats" class="tab-btn px-3.5 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="uil uil-tag-alt mr-1"></i> Categories
+          </button>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: ALL BLOG POSTS (CRUD)
+           ==================================================================== -->
+      <div id="tab-pane-blogs" class="tab-pane">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Published Articles &amp; Blog Posts</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">View, edit, or delete articles live on the Knowledge Hub.</p>
+          </div>
+          <button onclick="switchTab('write-blog')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition">
+            <i class="uil uil-plus"></i> Write New Article
+          </button>
+        </div>
+
+        <div id="admin-blogs-loading" class="text-center py-12">
+          <div class="inline-block w-8 h-8 border-3 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <div id="admin-blogs-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: PUBLISH NEW BLOG POST
+           ==================================================================== -->
+      <div id="tab-pane-write-blog" class="tab-pane hidden max-w-3xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Publish New Blog Article</h2>
+            <span class="px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 text-[11px] font-semibold border border-teal-200 dark:border-teal-800">
+              Live Hub Publishing
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Create rich analytical essays, research commentaries, and policy reflections.</p>
+
+          <form id="form-publish-blog" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Article Title *</label>
+              <input id="post-title" name="title" type="text" required placeholder="e.g. Advancing Viral Immunology Research in Low-Resource Settings" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Author Name</label>
+                <input id="post-author" name="author" type="text" value="Maryam Irekeola, PhD" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                <select id="blog-category-select" name="category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500">
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Short Excerpt (For Card Summary) *</label>
+              <textarea id="post-excerpt" name="excerpt" rows="2" required placeholder="Key summary to hook readers on the cards..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Featured Cover Image (Upload or specify URL)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input id="post-cover-file" name="cover_file" type="file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 dark:file:bg-teal-950 dark:file:text-teal-300 hover:file:bg-teal-100 cursor-pointer" />
+                <input id="post-cover-url" name="cover_url" type="text" placeholder="Or paste image URL (e.g. assets/img/...)" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+              </div>
+            </div>
+
+            <!-- Content Area with Formatting Toolbar -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Article Content (HTML / Formatted Text) *</label>
+                <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+                  <button type="button" onclick="formatDoc('post-content', 'h2')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Heading 2">H2</button>
+                  <button type="button" onclick="formatDoc('post-content', 'h3')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Heading 3">H3</button>
+                  <button type="button" onclick="formatDoc('post-content', 'b')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Bold">B</button>
+                  <button type="button" onclick="formatDoc('post-content', 'i')" class="px-2 py-0.5 rounded text-[11px] italic font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Italic">I</button>
+                  <button type="button" onclick="formatDoc('post-content', 'quote')" class="px-2 py-0.5 rounded text-[11px] hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Quote">Quote</button>
+                  <button type="button" onclick="formatDoc('post-content', 'p')" class="px-2 py-0.5 rounded text-[11px] hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Paragraph">¶</button>
+                </div>
+              </div>
+              <textarea id="post-content" name="content" rows="12" required placeholder="Write your article here. You can use standard paragraphs, <h2>Section Headings</h2>, and <blockquote>quotes</blockquote>..." class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-xs leading-relaxed text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+            </div>
+
+            <button type="submit" id="btn-submit-blog" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-md transition flex items-center justify-center gap-2">
+              <i class="uil uil-rocket"></i>
+              <span>Publish Article Now</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: ALL BOOKS
+           ==================================================================== -->
+      <div id="tab-pane-books" class="tab-pane hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Books &amp; Publications Library</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Manage uploaded PDF publications and executive documents.</p>
+          </div>
+          <button onclick="switchTab('upload')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition">
+            <i class="uil uil-plus"></i> Upload New PDF
+          </button>
+        </div>
+
+        <div id="admin-books-loading" class="text-center py-12">
+          <div class="inline-block w-8 h-8 border-3 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <div id="admin-books-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: DOWNLOAD LEADS
+           ==================================================================== -->
+      <div id="tab-pane-leads" class="tab-pane hidden max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Download Leads &amp; Reader Contacts</h2>
+                <span class="px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 text-[11px] font-semibold border border-teal-200 dark:border-teal-800">
+                  Live Neon Capture
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Visitors must confirm their name and email to download publications. All recorded leads are displayed below.</p>
+            </div>
+
+            <button id="btn-export-csv" class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition border border-slate-200 dark:border-slate-700">
+              <i class="uil uil-export text-sm"></i>
+              <span>Export CSV</span>
+            </button>
+          </div>
+
+          <div id="leads-loading" class="text-center py-8">
+            <div class="inline-block w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+
+          <div id="leads-table-container" class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 hidden">
+            <table class="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+              <thead class="bg-slate-50 dark:bg-slate-800/80 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                <tr>
+                  <th class="px-4 py-3">Visitor Name</th>
+                  <th class="px-4 py-3">Email Address</th>
+                  <th class="px-4 py-3">Publication</th>
+                  <th class="px-4 py-3">Date &amp; Time</th>
+                </tr>
+              </thead>
+              <tbody id="leads-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+              </tbody>
+            </table>
+          </div>
+
+          <div id="leads-empty" class="hidden text-center py-12 text-xs text-slate-400">
+            No downloads recorded yet. When visitors download your books, their name and email will appear here in real time.
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: UPLOAD EXISTING PDF (BOOK)
+           ==================================================================== -->
+      <div id="tab-pane-upload" class="tab-pane hidden max-w-2xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">Upload New Publication</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">File will be automatically stored in Neon Object Storage and rendered on the Hub.</p>
+
+          <form id="form-upload-book" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Document Title *</label>
+              <input name="title" type="text" required placeholder="e.g. Navigating Research Methodologies" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Author Name</label>
+                <input name="author" type="text" value="Maryam Irekeola, PhD" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                <select id="upload-category-select" name="category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500">
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Synopsis / Description</label>
+              <textarea name="description" rows="3" placeholder="Brief summary for visitors to read..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">PDF File Document *</label>
+              <input name="pdf_file" type="file" accept=".pdf,application/pdf" required class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 dark:file:bg-teal-950 dark:file:text-teal-300 hover:file:bg-teal-100 cursor-pointer" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Cover Artwork (Optional)</label>
+              <input name="cover_file" type="file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 dark:file:bg-slate-800 dark:file:text-slate-300 hover:file:bg-slate-200 cursor-pointer" />
+            </div>
+
+            <button type="submit" id="btn-submit-upload" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-md transition flex items-center justify-center gap-2">
+              <i class="uil uil-cloud-upload"></i>
+              <span>Publish to Neon Object Storage</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: TYPE TEXT & CONVERT TO PDF (BOOK)
+           ==================================================================== -->
+      <div id="tab-pane-write" class="tab-pane hidden max-w-3xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Write &amp; Compile Branded PDF</h2>
+            <span class="px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 text-[11px] font-semibold border border-teal-200 dark:border-teal-800">
+              Auto PDF-Lib Engine
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Type text below. It automatically compiles into a branded PDF with Maryam's header, custom typography, divider lines, and page numbers, and uploads it to Neon Object Storage.</p>
+
+          <form id="form-write-book" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Document Title *</label>
+              <input name="title" type="text" required placeholder="e.g. Policy Brief: Advancing Early Career Researchers" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Author Name</label>
+                <input name="author" type="text" value="Maryam Irekeola, PhD" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                <select id="write-category-select" name="category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500">
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Short Summary (For Card Preview)</label>
+              <input name="description" type="text" placeholder="One or two sentences describing this publication..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Document Body Content *</label>
+                <span id="char-counter" class="text-[11px] text-slate-400 font-mono">0 characters</span>
+              </div>
+              <textarea id="write-text-area" name="text_content" rows="10" required placeholder="Type or paste your complete document text here..." class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+            </div>
+
+            <button type="submit" id="btn-submit-write" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs tracking-wide shadow-md transition flex items-center justify-center gap-2">
+              <i class="uil uil-file-check-alt"></i>
+              <span>Compile &amp; Publish PDF to Neon</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           TAB: CATEGORIES MANAGEMENT
+           ==================================================================== -->
+      <div id="tab-pane-cats" class="tab-pane hidden max-w-2xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="font-display font-bold text-lg text-slate-900 dark:text-white">Category Management</h2>
+            <span class="px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 text-[11px] font-semibold border border-teal-200 dark:border-teal-800">
+              <span id="categories-count">0</span> Categories
+            </span>
+          </div>
+          
+          <div class="p-3.5 rounded-2xl bg-teal-50/60 dark:bg-teal-950/40 border border-teal-200/60 dark:border-teal-800/60 text-xs text-teal-800 dark:text-teal-200 mb-6 flex items-start gap-2.5">
+            <i class="uil uil-info-circle text-base text-teal-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong>Smart Tag Consistency:</strong> When you delete a category, any books or blog posts previously assigned to it are automatically re-tagged as <strong>"General"</strong>. This ensures book and blog cards never display broken or orphaned category tags.
+            </div>
+          </div>
+
+          <!-- Add Category Form -->
+          <form id="form-add-category" class="flex gap-2 mb-6">
+            <input id="input-new-cat" type="text" required placeholder="New Category Name (e.g. Immunology Research)" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+            <button type="submit" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition flex items-center gap-1.5 shrink-0">
+              <i class="uil uil-plus"></i> Add Category
+            </button>
+          </form>
+
+          <!-- Categories List -->
+          <div class="border-t border-slate-100 dark:border-slate-800 pt-4">
+            <h3 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Existing Categories</h3>
+            <div id="categories-list" class="divide-y divide-slate-100 dark:divide-slate-800">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. Edit Blog Post Modal
+       ======================================================================== -->
+  <div id="modal-edit-blog" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8 max-h-[92vh] overflow-y-auto">
+      
+      <button onclick="closeEditBlogModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <i class="uil uil-times text-lg"></i>
+      </button>
+
+      <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-1">Edit Blog Post</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Modify article details, category, or content.</p>
+
+      <form id="form-edit-blog" class="space-y-4">
+        <input type="hidden" id="edit-post-id" />
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Title *</label>
+          <input id="edit-post-title" type="text" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Author</label>
+            <input id="edit-post-author" type="text" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+            <select id="edit-post-category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500">
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Excerpt *</label>
+          <textarea id="edit-post-excerpt" rows="2" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Replace Cover Image (Optional)</label>
+          <input id="edit-post-cover-file" type="file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 dark:file:bg-slate-800 dark:file:text-slate-300 cursor-pointer" />
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Article Content *</label>
+            <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+              <button type="button" onclick="formatDoc('edit-post-content', 'h2')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300">H2</button>
+              <button type="button" onclick="formatDoc('edit-post-content', 'h3')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300">H3</button>
+              <button type="button" onclick="formatDoc('edit-post-content', 'b')" class="px-2 py-0.5 rounded text-[11px] font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300">B</button>
+              <button type="button" onclick="formatDoc('edit-post-content', 'i')" class="px-2 py-0.5 rounded text-[11px] italic font-bold hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300">I</button>
+              <button type="button" onclick="formatDoc('edit-post-content', 'quote')" class="px-2 py-0.5 rounded text-[11px] hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300">Quote</button>
+            </div>
+          </div>
+          <textarea id="edit-post-content" rows="10" required class="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-xs leading-relaxed text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+          <button type="button" onclick="closeEditBlogModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 transition">
+            Cancel
+          </button>
+          <button type="submit" id="btn-save-edit-blog" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-md transition flex items-center gap-1.5">
+            <i class="uil uil-check"></i>
+            <span>Save Changes</span>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       5. Client Script
+       ======================================================================== -->
+  <script>
+    // Theme toggle
+    document.getElementById('theme-btn')?.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    let adminToken = localStorage.getItem('fish_token');
+
+    const loginSection = document.getElementById('login-section');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const logoutBtn = document.getElementById('logout-btn');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    const loginErrorMsg = document.getElementById('login-error-msg');
+
+    // Text formatting helper for textareas
+    function formatDoc(targetId, tag) {
+      const textarea = document.getElementById(targetId);
+      if (!textarea) return;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const sel = textarea.value.substring(start, end) || 'text';
+      let replacement = '';
+
+      if (tag === 'b') replacement = `<strong>${sel}</strong>`;
+      else if (tag === 'i') replacement = `<em>${sel}</em>`;
+      else if (tag === 'h2') replacement = `\n<h2>${sel}</h2>\n`;
+      else if (tag === 'h3') replacement = `\n<h3>${sel}</h3>\n`;
+      else if (tag === 'quote') replacement = `\n<blockquote>"${sel}"</blockquote>\n`;
+      else if (tag === 'p') replacement = `\n<p>${sel}</p>\n`;
+
+      textarea.setRangeText(replacement, start, end, 'end');
+      textarea.focus();
+    }
+
+    // Check existing session
+    async function checkAuth() {
+      if (!adminToken) {
+        showLogin();
+        return;
+      }
+      try {
+        const res = await fetch('/api/auth/me', {
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          showDashboard();
+          loadAdminBlogs();
+          loadAdminBooks();
+          loadCategories();
+          loadLeads();
+        } else {
+          showLogin();
+        }
+      } catch (err) {
+        showLogin();
+      }
+    }
+
+    function showLogin() {
+      adminToken = null;
+      localStorage.removeItem('fish_token');
+      loginSection.classList.remove('hidden');
+      dashboardSection.classList.add('hidden');
+      logoutBtn.classList.add('hidden');
+    }
+
+    function showDashboard() {
+      loginSection.classList.add('hidden');
+      dashboardSection.classList.remove('hidden');
+      logoutBtn.classList.remove('hidden');
+    }
+
+    logoutBtn?.addEventListener('click', () => {
+      showLogin();
+    });
+
+    // Login Form Submit
+    loginForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginError.classList.add('hidden');
+      const submitBtn = document.getElementById('login-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Verifying with Neon...';
+
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json();
+        if (data.success && data.token) {
+          adminToken = data.token;
+          localStorage.setItem('fish_token', adminToken);
+          showDashboard();
+          loadAdminBlogs();
+          loadAdminBooks();
+          loadCategories();
+          loadLeads();
+        } else {
+          loginErrorMsg.innerText = data.error || 'Authentication failed.';
+          loginError.classList.remove('hidden');
+        }
+      } catch (err) {
+        loginErrorMsg.innerText = 'Network error contacting server.';
+        loginError.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>Sign In to Dashboard</span> <i class="uil uil-arrow-right"></i>`;
+      }
+    });
+
+    // Tab Navigation
+    const tabs = {
+      blogs: { btn: document.getElementById('tab-btn-blogs'), pane: document.getElementById('tab-pane-blogs') },
+      'write-blog': { btn: document.getElementById('tab-btn-write-blog'), pane: document.getElementById('tab-pane-write-blog') },
+      books: { btn: document.getElementById('tab-btn-books'), pane: document.getElementById('tab-pane-books') },
+      leads: { btn: document.getElementById('tab-btn-leads'), pane: document.getElementById('tab-pane-leads') },
+      upload: { btn: document.getElementById('tab-btn-upload'), pane: document.getElementById('tab-pane-upload') },
+      write: { btn: document.getElementById('tab-btn-write'), pane: document.getElementById('tab-pane-write') },
+      cats: { btn: document.getElementById('tab-btn-cats'), pane: document.getElementById('tab-pane-cats') },
+    };
+
+    function switchTab(name) {
+      Object.keys(tabs).forEach((k) => {
+        const t = tabs[k];
+        if (!t.btn || !t.pane) return;
+        if (k === name) {
+          t.btn.classList.add('active', 'bg-white', 'dark:bg-slate-900', 'text-teal-600', 'dark:text-teal-400', 'shadow-sm');
+          t.btn.classList.remove('text-slate-600', 'dark:text-slate-400');
+          t.pane.classList.remove('hidden');
+        } else {
+          t.btn.classList.remove('active', 'bg-white', 'dark:bg-slate-900', 'text-teal-600', 'dark:text-teal-400', 'shadow-sm');
+          t.btn.classList.add('text-slate-600', 'dark:text-slate-400');
+          t.pane.classList.add('hidden');
+        }
+      });
+    }
+
+    tabs.blogs.btn?.addEventListener('click', () => { switchTab('blogs'); loadAdminBlogs(); });
+    tabs['write-blog'].btn?.addEventListener('click', () => switchTab('write-blog'));
+    tabs.books.btn?.addEventListener('click', () => { switchTab('books'); loadAdminBooks(); });
+    tabs.leads.btn?.addEventListener('click', () => { switchTab('leads'); loadLeads(); });
+    tabs.upload.btn?.addEventListener('click', () => switchTab('upload'));
+    tabs.write.btn?.addEventListener('click', () => switchTab('write'));
+    tabs.cats.btn?.addEventListener('click', () => switchTab('cats'));
+
+    // Character counter for text writer
+    const writeArea = document.getElementById('write-text-area');
+    const charCounter = document.getElementById('char-counter');
+    writeArea?.addEventListener('input', () => {
+      charCounter.innerText = `${writeArea.value.length} characters`;
+    });
+
+    // ========================================================================
+    // 1. Load Admin Blog Posts (CRUD)
+    // ========================================================================
+    const adminBlogsListEl = document.getElementById('admin-blogs-list');
+    const adminBlogsLoadingEl = document.getElementById('admin-blogs-loading');
+    const blogsCountEl = document.getElementById('blogs-count');
+    let allAdminBlogs = [];
+
+    async function loadAdminBlogs() {
+      if (!adminToken) return;
+      adminBlogsLoadingEl.classList.remove('hidden');
+      adminBlogsListEl.classList.add('hidden');
+      try {
+        const res = await fetch('/api/admin/blogs', {
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          allAdminBlogs = data.blogs || [];
+          renderAdminBlogs(allAdminBlogs);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        adminBlogsLoadingEl.classList.add('hidden');
+      }
+    }
+
+    function renderAdminBlogs(blogs) {
+      blogsCountEl.innerText = blogs.length;
+      adminBlogsListEl.innerHTML = '';
+      adminBlogsListEl.classList.remove('hidden');
+
+      if (blogs.length === 0) {
+        adminBlogsListEl.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs">No blog articles published yet. Click "Publish Blog" to create your first post.</div>`;
+        return;
+      }
+
+      blogs.forEach((post) => {
+        const card = document.createElement('div');
+        card.className = 'rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm flex flex-col justify-between';
+        const displayCat = post.category || 'General';
+        const dateFormatted = new Date(post.created_at).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        });
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-teal-50 dark:bg-teal-950 text-teal-600 border border-teal-200 dark:border-teal-800">${escapeHtml(displayCat)}</span>
+              <span class="text-[11px] text-slate-400">${dateFormatted}</span>
+            </div>
+            <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white line-clamp-2 mb-1.5">${escapeHtml(post.title)}</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 mb-4">${escapeHtml(post.excerpt || '')}</p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+            <a href="/blog/${post.id}" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1">
+              <i class="uil uil-eye"></i> View
+            </a>
+            <div class="flex items-center gap-1.5">
+              <button onclick="openEditBlogModal(${post.id})" class="px-3 py-1.5 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+                <i class="uil uil-edit"></i> Edit
+              </button>
+              <button onclick="deleteBlog(${post.id})" class="px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold hover:bg-rose-100 transition flex items-center gap-1">
+                <i class="uil uil-trash-alt"></i> Delete
+              </button>
+            </div>
+          </div>
+        `;
+        adminBlogsListEl.appendChild(card);
+      });
+    }
+
+    // Publish Blog Post
+    const formPublishBlog = document.getElementById('form-publish-blog');
+    formPublishBlog?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('btn-submit-blog');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span> <span>Publishing to Neon...</span>`;
+
+      const formData = new FormData(formPublishBlog);
+
+      try {
+        const res = await fetch('/api/blogs', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${adminToken}` },
+          body: formData,
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Blog post published successfully!');
+          formPublishBlog.reset();
+          switchTab('blogs');
+          loadAdminBlogs();
+        } else {
+          alert(data.error || 'Failed to publish blog post.');
+        }
+      } catch (err) {
+        alert('Error publishing blog post.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="uil uil-rocket"></i> <span>Publish Article Now</span>`;
+      }
+    });
+
+    // Delete Blog Post
+    async function deleteBlog(id) {
+      if (!confirm('Are you sure you want to delete this blog article?')) return;
+      try {
+        const res = await fetch(`/api/blogs/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          loadAdminBlogs();
+        } else {
+          alert(data.error || 'Failed to delete blog article.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      }
+    }
+
+    // Edit Blog Modal Logic
+    const editBlogModal = document.getElementById('modal-edit-blog');
+    const formEditBlog = document.getElementById('form-edit-blog');
+
+    function openEditBlogModal(id) {
+      const post = allAdminBlogs.find((p) => p.id === id);
+      if (!post) return;
+
+      document.getElementById('edit-post-id').value = post.id;
+      document.getElementById('edit-post-title').value = post.title;
+      document.getElementById('edit-post-author').value = post.author || 'Maryam Irekeola, PhD';
+      document.getElementById('edit-post-category').value = post.category || 'General';
+      document.getElementById('edit-post-excerpt').value = post.excerpt || '';
+      document.getElementById('edit-post-content').value = post.content || '';
+
+      editBlogModal.classList.remove('hidden');
+    }
+
+    function closeEditBlogModal() {
+      editBlogModal.classList.add('hidden');
+    }
+
+    formEditBlog?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('edit-post-id').value;
+      const saveBtn = document.getElementById('btn-save-edit-blog');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = `<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span> <span>Saving...</span>`;
+
+      const formData = new FormData();
+      formData.append('title', document.getElementById('edit-post-title').value);
+      formData.append('author', document.getElementById('edit-post-author').value);
+      formData.append('category', document.getElementById('edit-post-category').value);
+      formData.append('excerpt', document.getElementById('edit-post-excerpt').value);
+      formData.append('content', document.getElementById('edit-post-content').value);
+
+      const coverFile = document.getElementById('edit-post-cover-file').files[0];
+      if (coverFile) {
+        formData.append('cover_file', coverFile);
+      }
+
+      try {
+        const res = await fetch(`/api/blogs/${id}`, {
+          method: 'PUT',
+          headers: { Authorization: `Bearer ${adminToken}` },
+          body: formData,
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Article updated successfully!');
+          closeEditBlogModal();
+          loadAdminBlogs();
+        } else {
+          alert(data.error || 'Failed to update article.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = `<i class="uil uil-check"></i> <span>Save Changes</span>`;
+      }
+    });
+
+    // ========================================================================
+    // 2. Load Admin Books
+    // ========================================================================
+    const adminBooksListEl = document.getElementById('admin-books-list');
+    const adminBooksLoadingEl = document.getElementById('admin-books-loading');
+    const booksCountEl = document.getElementById('books-count');
+
+    async function loadAdminBooks() {
+      adminBooksLoadingEl.classList.remove('hidden');
+      adminBooksListEl.classList.add('hidden');
+      try {
+        const res = await fetch('/api/books');
+        const data = await res.json();
+        if (data.success) {
+          renderAdminBooks(data.books || []);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        adminBooksLoadingEl.classList.add('hidden');
+      }
+    }
+
+    function renderAdminBooks(books) {
+      booksCountEl.innerText = books.length;
+      adminBooksListEl.innerHTML = '';
+      adminBooksListEl.classList.remove('hidden');
+
+      if (books.length === 0) {
+        adminBooksListEl.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs">No publications yet. Use the tabs above to upload or compile your first PDF.</div>`;
+        return;
+      }
+
+      books.forEach((book) => {
+        const card = document.createElement('div');
+        card.className = 'rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm flex flex-col justify-between';
+        const displayCat = book.category || 'General';
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-teal-50 dark:bg-teal-950 text-teal-600 border border-teal-200 dark:border-teal-800">${escapeHtml(displayCat)}</span>
+              <span class="text-[11px] text-slate-400">ID: #${book.id}</span>
+            </div>
+            <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white line-clamp-2 mb-1">${escapeHtml(book.title)}</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-4">${escapeHtml(book.description || '')}</p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+            <a href="${escapeAttr(book.view_url || book.pdf_url)}" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-200 transition flex items-center gap-1">
+              <i class="uil uil-file-alt"></i> View PDF
+            </a>
+            <button onclick="deleteBook(${book.id})" class="px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold hover:bg-rose-100 transition flex items-center gap-1">
+              <i class="uil uil-trash-alt"></i> Delete
+            </button>
+          </div>
+        `;
+        adminBooksListEl.appendChild(card);
+      });
+    }
+
+    async function deleteBook(id) {
+      if (!confirm('Are you sure you want to delete this publication?')) return;
+      try {
+        const res = await fetch(`/api/books/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          loadAdminBooks();
+        } else {
+          alert(data.error || 'Failed to delete book.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      }
+    }
+
+    // ========================================================================
+    // 3. Download Leads Management
+    // ========================================================================
+    const leadsTbody = document.getElementById('leads-tbody');
+    const leadsTableContainer = document.getElementById('leads-table-container');
+    const leadsLoading = document.getElementById('leads-loading');
+    const leadsEmpty = document.getElementById('leads-empty');
+    const leadsCount = document.getElementById('leads-count');
+    let allLeads = [];
+
+    async function loadLeads() {
+      if (!adminToken) return;
+      leadsLoading.classList.remove('hidden');
+      leadsTableContainer.classList.add('hidden');
+      leadsEmpty.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/admin/downloads', {
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          allLeads = data.downloads || [];
+          renderLeads(allLeads);
+        }
+      } catch (err) {
+        console.error('Failed to load leads:', err);
+      } finally {
+        leadsLoading.classList.add('hidden');
+      }
+    }
+
+    function renderLeads(leads) {
+      leadsCount.innerText = leads.length;
+      leadsTbody.innerHTML = '';
+
+      if (!leads || leads.length === 0) {
+        leadsEmpty.classList.remove('hidden');
+        leadsTableContainer.classList.add('hidden');
+        return;
+      }
+
+      leadsEmpty.classList.add('hidden');
+      leadsTableContainer.classList.remove('hidden');
+
+      leads.forEach((l) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition';
+        const dateFormatted = new Date(l.created_at).toLocaleString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/60 text-teal-700 dark:text-teal-300 flex items-center justify-center text-[10px] font-bold">
+              ${escapeHtml(l.visitor_name.charAt(0).toUpperCase())}
+            </span>
+            <span>${escapeHtml(l.visitor_name)}</span>
+          </td>
+          <td class="px-4 py-3">
+            <a href="mailto:${escapeAttr(l.visitor_email)}" class="text-teal-600 dark:text-teal-400 hover:underline">
+              ${escapeHtml(l.visitor_email)}
+            </a>
+          </td>
+          <td class="px-4 py-3 max-w-xs truncate font-medium text-slate-800 dark:text-slate-200">
+            ${escapeHtml(l.book_title)}
+          </td>
+          <td class="px-4 py-3 text-slate-400 text-[11px] whitespace-nowrap">
+            ${dateFormatted}
+          </td>
+        `;
+        leadsTbody.appendChild(tr);
+      });
+    }
+
+    // Export Leads as CSV
+    document.getElementById('btn-export-csv')?.addEventListener('click', () => {
+      if (allLeads.length === 0) {
+        alert('No download leads to export yet.');
+        return;
+      }
+
+      let csv = 'Visitor Name,Visitor Email,Publication Downloaded,Date & Time\n';
+      allLeads.forEach((l) => {
+        const safeName = `"${(l.visitor_name || '').replace(/"/g, '""')}"`;
+        const safeEmail = `"${(l.visitor_email || '').replace(/"/g, '""')}"`;
+        const safeBook = `"${(l.book_title || '').replace(/"/g, '""')}"`;
+        const date = `"${new Date(l.created_at).toISOString()}"`;
+        csv += `${safeName},${safeEmail},${safeBook},${date}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `maryam-irekeola-download-leads-${Date.now()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    // ========================================================================
+    // 4. Categories Management (Fixed Reassignment to "General")
+    // ========================================================================
+    const catListEl = document.getElementById('categories-list');
+    const catCountEl = document.getElementById('categories-count');
+    const blogCatSelect = document.getElementById('blog-category-select');
+    const editBlogCatSelect = document.getElementById('edit-post-category');
+    const uploadCatSelect = document.getElementById('upload-category-select');
+    const writeCatSelect = document.getElementById('write-category-select');
+    const formAddCat = document.getElementById('form-add-category');
+    const inputNewCat = document.getElementById('input-new-cat');
+
+    let currentCategories = [];
+
+    async function loadCategories() {
+      try {
+        const res = await fetch('/api/categories');
+        const data = await res.json();
+        if (data.success) {
+          currentCategories = data.categories || [];
+          renderCategories();
+          populateCategorySelects();
+        }
+      } catch (err) {
+        console.error('Failed to load categories:', err);
+      }
+    }
+
+    function renderCategories() {
+      if (catCountEl) catCountEl.innerText = currentCategories.length;
+      if (!catListEl) return;
+      catListEl.innerHTML = '';
+
+      if (currentCategories.length === 0) {
+        catListEl.innerHTML = '<div class="text-xs text-slate-400 py-3">No categories defined yet.</div>';
+        return;
+      }
+
+      currentCategories.forEach((c) => {
+        const item = document.createElement('div');
+        item.className = 'py-3 flex items-center justify-between text-xs';
+        const isGeneral = c.name.toLowerCase() === 'general';
+
+        item.innerHTML = `
+          <div class="flex items-center gap-2">
+            <i class="uil uil-tag text-teal-600"></i>
+            <span class="font-semibold text-slate-900 dark:text-white">${escapeHtml(c.name)}</span>
+            ${isGeneral ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-semibold">Default Fallback</span>' : ''}
+          </div>
+          <div>
+            ${
+              isGeneral
+                ? '<span class="text-[11px] text-slate-400 italic">Protected</span>'
+                : `<button onclick="deleteCategory(${c.id}, '${escapeAttr(c.name)}')" class="p-1.5 rounded-lg text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition" title="Delete category and reassign items to General">
+                     <i class="uil uil-trash-alt text-sm"></i>
+                   </button>`
+            }
+          </div>
+        `;
+        catListEl.appendChild(item);
+      });
+    }
+
+    function populateCategorySelects() {
+      const selects = [blogCatSelect, editBlogCatSelect, uploadCatSelect, writeCatSelect].filter(Boolean);
+      selects.forEach((sel) => {
+        const currentVal = sel.value;
+        sel.innerHTML = '';
+        currentCategories.forEach((c) => {
+          const opt = document.createElement('option');
+          opt.value = c.name;
+          opt.textContent = c.name;
+          sel.appendChild(opt);
+        });
+        if (currentVal) sel.value = currentVal;
+      });
+    }
+
+    formAddCat?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = inputNewCat.value.trim();
+      if (!name) return;
+
+      try {
+        const res = await fetch('/api/categories', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${adminToken}`,
+          },
+          body: JSON.stringify({ name }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          inputNewCat.value = '';
+          loadCategories();
+        } else {
+          alert(data.error || 'Failed to add category.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      }
+    });
+
+    async function deleteCategory(id, name) {
+      if (!confirm(`Are you sure you want to delete category "${name}"?\n\nAll books and blog posts currently in this category will be automatically re-tagged as "General" so no broken tags remain on the cards.`)) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/categories/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          // Immediately reload categories, books, and blogs to refresh badges!
+          loadCategories();
+          loadAdminBooks();
+          loadAdminBlogs();
+        } else {
+          alert(data.error || 'Failed to delete category.');
+        }
+      } catch (err) {
+        alert('Network error.');
+      }
+    }
+
+    // ========================================================================
+    // 5. Upload PDF Book Form
+    // ========================================================================
+    const formUpload = document.getElementById('form-upload-book');
+    formUpload?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('btn-submit-upload');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span> <span>Uploading to Neon...</span>`;
+
+      const formData = new FormData(formUpload);
+
+      try {
+        const res = await fetch('/api/books', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${adminToken}` },
+          body: formData,
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Publication uploaded to Neon Object Storage successfully!');
+          formUpload.reset();
+          switchTab('books');
+          loadAdminBooks();
+        } else {
+          alert(data.error || 'Failed to upload publication.');
+        }
+      } catch (err) {
+        alert('Error uploading to Neon Object Storage.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="uil uil-cloud-upload"></i> <span>Publish to Neon Object Storage</span>`;
+      }
+    });
+
+    // ========================================================================
+    // 6. Write Text & Generate PDF Form
+    // ========================================================================
+    const formWrite = document.getElementById('form-write-book');
+    formWrite?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('btn-submit-write');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span> <span>Compiling Executive PDF...</span>`;
+
+      const formData = new FormData(formWrite);
+
+      try {
+        const res = await fetch('/api/books', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${adminToken}` },
+          body: formData,
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Executive PDF compiled, signed, and stored on Neon successfully!');
+          formWrite.reset();
+          charCounter.innerText = '0 characters';
+          switchTab('books');
+          loadAdminBooks();
+        } else {
+          alert(data.error || 'Failed to compile and publish PDF.');
+        }
+      } catch (err) {
+        alert('Error compiling PDF.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="uil uil-file-check-alt"></i> <span>Compile &amp; Publish PDF to Neon</span>`;
+      }
+    });
+
+    // Escape Key Listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeEditBlogModal();
+      }
+    });
+
+    // Helper: Escape HTML & Attributes
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeAttr(str) {
+      if (!str) return '';
+      return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    // Initialize
+    checkAuth();
+  </script>
+</body>
+</html>

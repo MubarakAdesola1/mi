@@ -136,6 +136,7 @@ function initSearchModal() {
   const searchCloseBtn = document.getElementById('search-close-btn');
 
   const searchableIndex = [
+    { title: "Blog & Publications Library", category: "Library", desc: "Articles, academic toolkits, research guides, and downloadable publications by Maryam Irekeola, PhD.", href: "/blog" },
     { title: "InsightSpace.Co Community", category: "Community", desc: "Digital platform & community on TikTok and Instagram helping PhD researchers communicate their work clearly beyond academia.", href: "#insightspace" },
     { title: "TikTok Channel — @Insightspace.co", category: "Social", desc: "Short-form actionable research communication and PhD insights.", href: "https://www.tiktok.com/@Insightspace.co" },
     { title: "Instagram Community — @insightspace.co", category: "Social", desc: "Visual carousels, academic career design, and researcher mindset content.", href: "https://www.instagram.com/insightspace.co" },

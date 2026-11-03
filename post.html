@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <base href="/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Article — Maryam Irekeola, PhD</title>
+  <meta name="description" id="page-meta-desc" content="Academic articles, analytical essays, and publications by Maryam Irekeola, PhD." />
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            teal: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a', 950: '#042f2e',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Dark Mode Init -->
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <style>
+    /* Executive Article Typography Styles */
+    .article-content {
+      font-size: 1.0625rem;
+      line-height: 1.85;
+    }
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+    .article-content h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.625rem;
+      line-height: 1.35;
+      margin-top: 2.75rem;
+      margin-bottom: 1.125rem;
+      color: inherit;
+      position: relative;
+    }
+    .article-content h2::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 0.25rem;
+      bottom: 0.25rem;
+      width: 4px;
+      background-color: #0d9488;
+      border-radius: 9999px;
+    }
+    @media (max-width: 640px) {
+      .article-content h2::before {
+        display: none;
+      }
+    }
+    .article-content h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.3125rem;
+      line-height: 1.4;
+      margin-top: 2.25rem;
+      margin-bottom: 0.875rem;
+      color: inherit;
+    }
+    .article-content blockquote {
+      position: relative;
+      margin: 2rem 0;
+      padding: 1.25rem 1.75rem;
+      border-left: 4px solid #0d9488;
+      border-radius: 0 1rem 1rem 0;
+      background-color: rgba(13, 148, 136, 0.05);
+      font-style: italic;
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+    .dark .article-content blockquote {
+      background-color: rgba(13, 148, 136, 0.12);
+    }
+    .article-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      space-y: 0.5rem;
+    }
+    .article-content ol {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      space-y: 0.5rem;
+    }
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+    .article-content a {
+      color: #0d9488;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .article-content a:hover {
+      color: #0f766e;
+    }
+    .article-content strong {
+      font-weight: 700;
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-300 selection:bg-teal-500 selection:text-white">
+
+  <!-- ========================================================================
+       1. Navigation Bar (Always Visible)
+       ======================================================================== -->
+  <header class="nav-fixed bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Avatar & Back Home -->
+      <a href="/" class="flex items-center gap-3 group" aria-label="Maryam Irekeola — Home">
+        <img src="assets/img/maryam-avatar.jpg" alt="Maryam Irekeola" class="w-12 h-12 rounded-full object-cover object-top border-2 border-teal-500 shadow-sm group-hover:scale-105 transition duration-300" />
+        <div class="hidden sm:block">
+          <div class="font-display font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition leading-tight">Maryam Irekeola</div>
+          <div class="text-xs text-teal-600 dark:text-teal-400 font-medium">PhD Researcher &amp; Author</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+        <a href="/#about" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">About</a>
+        <a href="/#insightspace" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-purple-500"></span>
+          InsightSpace.Co
+        </a>
+        <a href="/#research" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Research &amp; Papers</a>
+        <a href="/#speaking" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Speaking</a>
+        
+        <!-- Active Blog & Publications Tab -->
+        <a href="/blog" class="px-3.5 py-2 text-sm font-semibold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 rounded-lg transition flex items-center gap-1.5 border border-teal-200/60 dark:border-teal-800/60">
+          <i class="uil uil-newspaper"></i>
+          <span>Blog &amp; Library</span>
+        </a>
+
+        <a href="/#contact" class="px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Contact</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center space-x-2.5">
+        <!-- Live Realtime Badge -->
+        <div id="realtime-status-pill" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 text-xs font-medium border border-teal-200 dark:border-teal-800/80">
+          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+          <span class="text-[11px]">Live Sync</span>
+        </div>
+
+        <!-- Dark/Light Mode Switcher -->
+        <button id="theme-toggle" class="p-2.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+          <i class="uil uil-moon text-lg dark:hidden"></i>
+          <i class="uil uil-sun text-lg hidden dark:block text-amber-400"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Open menu">
+          <i class="uil uil-bars text-xl"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-6 space-y-1">
+      <a href="/#about" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">About</a>
+      <a href="/#insightspace" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">InsightSpace.Co</a>
+      <a href="/#research" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Research &amp; Papers</a>
+      <a href="/#speaking" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Speaking</a>
+      <a href="/blog" class="block py-2 text-sm font-semibold text-teal-600 dark:text-teal-400">Blog &amp; Library</a>
+      <a href="/#contact" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-teal-600">Contact</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. Dedicated Article Main Page
+       ======================================================================== -->
+  <main class="flex-grow">
+    
+    <!-- Loading State -->
+    <div id="post-loading" class="max-w-4xl mx-auto px-4 sm:px-6 py-20 text-center">
+      <div class="inline-block w-10 h-10 border-3 border-teal-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Loading publication from Neon Lakebase...</p>
+    </div>
+
+    <!-- Error / Not Found State -->
+    <div id="post-error" class="hidden max-w-lg mx-auto px-4 py-24 text-center">
+      <div class="w-16 h-16 rounded-3xl bg-rose-50 dark:bg-rose-950/40 text-rose-500 flex items-center justify-center mx-auto mb-4 text-3xl">
+        <i class="uil uil-exclamation-octagon"></i>
+      </div>
+      <h2 class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-2">Article Not Found</h2>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">The article you are looking for may have been updated, relocated, or unpublished.</p>
+      <a href="/blog" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-md transition">
+        <i class="uil uil-arrow-left"></i> Return to Blog &amp; Library
+      </a>
+    </div>
+
+    <!-- Article Container (Rendered when loaded) -->
+    <article id="post-container" class="hidden pb-20 pt-8 sm:pt-12">
+      
+      <!-- Top Breadcrumbs & Back Link -->
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div class="flex items-center justify-between gap-4">
+          <a href="/blog" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition group">
+            <i class="uil uil-arrow-left group-hover:-translate-x-1 transition duration-200"></i>
+            <span>Back to Knowledge Hub</span>
+          </a>
+
+          <div class="flex items-center gap-2">
+            <button onclick="triggerShare()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 text-xs font-semibold transition border border-slate-200 dark:border-slate-700">
+              <i class="uil uil-share-alt"></i>
+              <span>Share Article</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Header -->
+      <header class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        
+        <!-- Category & Read Time Pills -->
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
+          <span id="article-category" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 border border-teal-200/80 dark:border-teal-800">
+            Policy Briefs
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <i class="uil uil-clock text-teal-500"></i>
+            <span id="article-readtime">4 min read</span>
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span id="article-date" class="text-xs text-slate-500 dark:text-slate-400">
+            27 October 2026
+          </span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 id="article-title" class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
+          Article Title
+        </h1>
+
+        <!-- Author Byline Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-5 border-y border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-3.5">
+            <img src="assets/img/maryam-avatar.jpg" alt="Maryam Irekeola, PhD" class="w-12 h-12 rounded-full object-cover object-top border-2 border-teal-500 shadow-sm" />
+            <div>
+              <div id="article-author" class="font-display font-bold text-sm text-slate-900 dark:text-white">Maryam Irekeola, PhD</div>
+              <div class="text-xs text-teal-600 dark:text-teal-400 font-medium">Doctoral Researcher • Founder, InsightSpace.Co</div>
+            </div>
+          </div>
+
+          <!-- Top Quick Share Links -->
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-xs text-slate-400 font-medium mr-1 hidden sm:inline">Share:</span>
+            <a id="quick-share-wa" href="#" target="_blank" class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 flex items-center justify-center text-sm transition" title="Share via WhatsApp">
+              <i class="uil uil-whatsapp"></i>
+            </a>
+            <a id="quick-share-li" href="#" target="_blank" class="w-8 h-8 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 hover:bg-sky-100 flex items-center justify-center text-sm transition" title="Share on LinkedIn">
+              <i class="uil uil-linkedin"></i>
+            </a>
+            <a id="quick-share-tw" href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 flex items-center justify-center text-sm transition" title="Share on X">
+              <i class="uil uil-twitter"></i>
+            </a>
+            <button onclick="copyCurrentLink()" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 flex items-center justify-center text-sm transition" title="Copy Link">
+              <i class="uil uil-link"></i>
+            </button>
+          </div>
+        </div>
+
+      </header>
+
+      <!-- Featured Cover Artwork (If available) -->
+      <div id="article-cover-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 hidden">
+        <div class="w-full h-72 sm:h-96 lg:h-[460px] rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl relative">
+          <img id="article-cover-img" src="" alt="Article Featured Artwork" class="w-full h-full object-cover object-top" />
+        </div>
+      </div>
+
+      <!-- Article Main Body -->
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Excerpt Callout (Lead Paragraph) -->
+        <div id="article-excerpt-container" class="p-5 sm:p-6 rounded-2xl bg-teal-50/60 dark:bg-teal-950/30 border border-teal-200/60 dark:border-teal-800/60 text-teal-900 dark:text-teal-200 text-base sm:text-lg font-medium leading-relaxed mb-8 italic">
+          <p id="article-excerpt"></p>
+        </div>
+
+        <!-- Rendered HTML Content -->
+        <div id="article-body" class="article-content text-slate-700 dark:text-slate-300">
+          <!-- Article HTML parsed here -->
+        </div>
+
+        <!-- ==================================================================
+             Bottom Interactive Share Bar
+             ================================================================== -->
+        <div class="mt-14 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div>
+              <div class="font-display font-bold text-base text-slate-900 dark:text-white mb-1">
+                Share this research insight
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                Help disseminate this knowledge with researchers, policymakers, and advocates.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <a id="btn-share-whatsapp" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 border border-emerald-200/60 dark:border-emerald-800/60 transition">
+                <i class="uil uil-whatsapp text-sm"></i> WhatsApp
+              </a>
+              <a id="btn-share-linkedin" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 text-xs font-semibold hover:bg-sky-100 border border-sky-200/60 dark:border-sky-800/60 transition">
+                <i class="uil uil-linkedin text-sm"></i> LinkedIn
+              </a>
+              <a id="btn-share-twitter" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 border border-slate-200 dark:border-slate-700 transition">
+                <i class="uil uil-twitter text-sm"></i> X (Twitter)
+              </a>
+              <button onclick="copyCurrentLink()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition">
+                <i class="uil uil-copy text-sm"></i> <span id="copy-btn-label">Copy Link</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             Author Bio & Collaboration Card
+             ================================================================== -->
+        <div class="mt-8 p-6 sm:p-8 rounded-3xl bg-slate-100/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+          <img src="assets/img/maryam-avatar.jpg" alt="Maryam Irekeola, PhD" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover object-top border-2 border-teal-500 shadow-md shrink-0" />
+          <div class="flex-grow">
+            <h3 class="font-display font-bold text-base text-slate-900 dark:text-white mb-1">
+              About Maryam Irekeola, PhD
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              Doctoral researcher specializing in viral immunology, molecular diagnostics, and research synthesis. Founder of InsightSpace.Co, dedicated to mentoring early-career researchers and bridging academic evidence with societal policy.
+            </p>
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+              <a href="index.html#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition">
+                <i class="uil uil-envelope"></i> Contact &amp; Collaborate
+              </a>
+              <a href="index.html#research" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition">
+                <i class="uil uil-file-alt"></i> View Research Papers
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================================================================
+           Related / More Articles Section
+           ================================================================== -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
+              More from the Knowledge Hub
+            </h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Explore further articles, analytical toolkits, and publications.</p>
+          </div>
+          <a href="/blog" class="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 dark:text-teal-400 hover:underline">
+            <span>View All</span>
+            <i class="uil uil-arrow-right"></i>
+          </a>
+        </div>
+
+        <div id="related-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Filled dynamically -->
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- ========================================================================
+       3. Footer
+       ======================================================================== -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span>&copy; 2026 Maryam Irekeola, PhD. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/" class="hover:text-teal-600 transition">Home</a>
+        <a href="/blog" class="hover:text-teal-600 transition font-semibold text-teal-600">Blog &amp; Library</a>
+        <a href="/#research" class="hover:text-teal-600 transition">Research</a>
+        <a href="/#contact" class="hover:text-teal-600 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-4 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold shadow-xl flex items-center gap-2 transition transform translate-y-2">
+    <i class="uil uil-check-circle text-teal-400 text-base"></i>
+    <span id="toast-msg">Link copied to clipboard!</span>
+  </div>
+
+  <!-- ========================================================================
+       4. Client Script Logic
+       ======================================================================== -->
+  <script>
+    // Theme Switcher
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle?.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    // Mobile Menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toast Helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      if (!toast || !toastMsg) return;
+      toastMsg.innerText = msg;
+      toast.classList.remove('hidden', 'translate-y-2');
+      setTimeout(() => {
+        toast.classList.add('hidden', 'translate-y-2');
+      }, 2500);
+    }
+
+    function copyCurrentLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Article link copied to clipboard!');
+        const btnLabel = document.getElementById('copy-btn-label');
+        if (btnLabel) {
+          btnLabel.innerText = 'Copied!';
+          setTimeout(() => { btnLabel.innerText = 'Copy Link'; }, 2000);
+        }
+      }).catch(() => {
+        showToast('Link copied!');
+      });
+    }
+
+    async function triggerShare() {
+      const title = document.getElementById('article-title')?.innerText || 'Article';
+      const url = window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, url });
+          return;
+        } catch (e) {}
+      }
+      copyCurrentLink();
+    }
+
+    // Extract Post ID or Slug from URL
+    function getPostIdentifier() {
+      // 1. Pathname: /blog/:id, /blogs/:id, /post/:id
+      const segments = window.location.pathname.split('/').filter(Boolean);
+      const lastSeg = segments[segments.length - 1];
+      if (lastSeg && lastSeg !== 'blog' && lastSeg !== 'blogs' && lastSeg !== 'post.html') {
+        return lastSeg;
+      }
+      // 2. Query parameters: ?id=1 or ?post=1
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id') || params.get('post');
+    }
+
+    let currentPost = null;
+
+    async function loadArticle() {
+      const identifier = getPostIdentifier();
+      const loadingEl = document.getElementById('post-loading');
+      const errorEl = document.getElementById('post-error');
+      const containerEl = document.getElementById('post-container');
+
+      if (!identifier) {
+        loadingEl.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/blogs/${encodeURIComponent(identifier)}`);
+        const data = await res.json();
+
+        if (!data.success || !data.blog) {
+          loadingEl.classList.add('hidden');
+          errorEl.classList.remove('hidden');
+          return;
+        }
+
+        currentPost = data.blog;
+        renderArticle(currentPost);
+        loadRelatedArticles(currentPost.id);
+
+        loadingEl.classList.add('hidden');
+        containerEl.classList.remove('hidden');
+      } catch (err) {
+        console.error('Failed to load article:', err);
+        loadingEl.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+      }
+    }
+
+    function renderArticle(post) {
+      // 1. Page Title & Meta
+      document.title = `${post.title} — Maryam Irekeola, PhD`;
+      const metaDesc = document.getElementById('page-meta-desc');
+      if (metaDesc) metaDesc.content = post.excerpt || post.title;
+
+      // 2. Category & Read Time
+      document.getElementById('article-category').innerText = post.category || 'General';
+      document.getElementById('article-readtime').innerText = post.read_time || '4 min read';
+      
+      const dateFormatted = new Date(post.created_at).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      });
+      document.getElementById('article-date').innerText = dateFormatted;
+
+      // 3. Title & Author
+      document.getElementById('article-title').innerText = post.title;
+      document.getElementById('article-author').innerText = post.author || 'Maryam Irekeola, PhD';
+
+      // 4. Featured Cover Artwork
+      const coverWrapper = document.getElementById('article-cover-container');
+      const coverImg = document.getElementById('article-cover-img');
+      if (post.cover_url && !post.cover_url.includes('maryam-avatar.jpg')) {
+        coverImg.src = post.cover_url;
+        coverWrapper.classList.remove('hidden');
+      } else {
+        coverWrapper.classList.add('hidden');
+      }
+
+      // 5. Excerpt
+      const excerptContainer = document.getElementById('article-excerpt-container');
+      const excerptText = document.getElementById('article-excerpt');
+      if (post.excerpt && post.excerpt.trim()) {
+        excerptText.innerText = post.excerpt.trim();
+        excerptContainer.classList.remove('hidden');
+      } else {
+        excerptContainer.classList.add('hidden');
+      }
+
+      // 6. Content Body
+      const bodyEl = document.getElementById('article-body');
+      bodyEl.innerHTML = post.content || `<p>${escapeHtml(post.excerpt || '')}</p>`;
+
+      // 7. Social Share URLs
+      const fullUrl = window.location.href;
+      const shareTitle = `${post.title} — by Maryam Irekeola, PhD`;
+      const encUrl = encodeURIComponent(fullUrl);
+      const encTitle = encodeURIComponent(shareTitle);
+
+      const waUrl = `https://api.whatsapp.com/send?text=${encTitle}%20${encUrl}`;
+      const liUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encUrl}`;
+      const twUrl = `https://twitter.com/intent/tweet?text=${encTitle}&url=${encUrl}`;
+
+      // Top Quick Share
+      document.getElementById('quick-share-wa').href = waUrl;
+      document.getElementById('quick-share-li').href = liUrl;
+      document.getElementById('quick-share-tw').href = twUrl;
+
+      // Bottom Share Bar
+      document.getElementById('btn-share-whatsapp').href = waUrl;
+      document.getElementById('btn-share-linkedin').href = liUrl;
+      document.getElementById('btn-share-twitter').href = twUrl;
+    }
+
+    async function loadRelatedArticles(currentId) {
+      try {
+        const res = await fetch('/api/blogs');
+        const data = await res.json();
+        if (!data.success || !data.blogs) return;
+
+        const related = data.blogs.filter((b) => b.id !== currentId).slice(0, 3);
+        const relatedGrid = document.getElementById('related-grid');
+        if (!relatedGrid) return;
+        relatedGrid.innerHTML = '';
+
+        if (related.length === 0) {
+          relatedGrid.parentElement.classList.add('hidden');
+          return;
+        }
+
+        related.forEach((p) => {
+          const card = document.createElement('a');
+          card.href = `/blog/${p.id}`;
+          card.className = 'group rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 shadow-sm hover:shadow-lg hover:border-teal-500/40 transition duration-300 flex flex-col justify-between';
+
+          const coverSrc = p.cover_url || 'assets/img/maryam-avatar.jpg';
+          const cat = p.category || 'General';
+
+          card.innerHTML = `
+            <div>
+              <div class="h-36 w-full rounded-2xl overflow-hidden mb-3.5 bg-slate-100 dark:bg-slate-800 relative group-hover:scale-[1.01] transition duration-300 border border-slate-100 dark:border-slate-800">
+                <img src="${escapeHtml(coverSrc)}" alt="${escapeHtml(p.title)}" class="w-full h-full object-cover object-top" onerror="this.src='assets/img/maryam-avatar.jpg'" />
+                <div class="absolute bottom-2 left-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-teal-600/90 text-white backdrop-blur-xs">
+                    ${escapeHtml(cat)}
+                  </span>
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-sm text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition line-clamp-2 mb-1.5 leading-snug">
+                ${escapeHtml(p.title)}
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">
+                ${escapeHtml(p.excerpt || '')}
+              </p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-teal-600 dark:text-teal-400 font-semibold">
+              <span>Read Article</span>
+              <i class="uil uil-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          `;
+          relatedGrid.appendChild(card);
+        });
+      } catch (e) {
+        console.error('Error loading related posts:', e);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadArticle();
+    });
+  </script>
+</body>
+</html>
+
